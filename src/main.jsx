@@ -5,13 +5,22 @@ import "./index.css";
 
 import { initializeApp } from "firebase/app";
 
+const {
+  VITE_API_KEY,
+  VITE_AUTH_DOMAIN,
+  VITE_PROJECT_ID,
+  VITE_STORAGE_BUCKET,
+  VITE_MESSAGING_SENDER_ID,
+  VITE_APP_ID,
+} = import.meta.env;
+
 const firebaseConfig = {
-  apiKey: "AIzaSyAHlTpbRLjlKqgu1C_GD6a93Kf9HoillAw",
-  authDomain: "grocery-list-787ac.firebaseapp.com",
-  projectId: "grocery-list-787ac",
-  storageBucket: "grocery-list-787ac.appspot.com",
-  messagingSenderId: "503183584661",
-  appId: "1:503183584661:web:2ddcb9d86f1f2f370c5a9c",
+  apiKey: VITE_API_KEY,
+  authDomain: VITE_AUTH_DOMAIN,
+  projectId: VITE_PROJECT_ID,
+  storageBucket: VITE_STORAGE_BUCKET,
+  messagingSenderId: VITE_MESSAGING_SENDER_ID,
+  appId: VITE_APP_ID,
 };
 
 // Initialize Firebase
