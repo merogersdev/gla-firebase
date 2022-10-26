@@ -1,0 +1,31 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+
+.button {
+  @include flex-center;
+  background: $primaryColor;
+  color: white;
+  padding: 0 1rem;
+
+  border: none;
+  cursor: pointer;
+
+  border-top-right-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
+
+  &__icon {
+    font-size: 1.5rem;
+  }
+
+  &--add {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: $primaryColor;
+  }
+  &--minus {
+    background: $errorColor;
+    padding: 0.75rem 1rem;
+  }
+}
