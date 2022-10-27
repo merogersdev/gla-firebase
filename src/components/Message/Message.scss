@@ -1,8 +1,8 @@
-@use "../../styles/partials/variables" as *;
+@use '../../styles/partials/variables' as *;
 
 .message {
-  background-color: white;
-  width: 15rem;
+  background-color: $textColor;
+  width: 100%;
   margin: 0 auto;
   padding: 1rem;
   border-radius: 0.2rem;

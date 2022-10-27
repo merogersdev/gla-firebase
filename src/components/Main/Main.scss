@@ -1,0 +1,6 @@
+@use '../../styles/partials/variables' as *;
+
+.main {
+  background-color: $backgroundColor;
+  min-height: calc(100vh - 3rem);
+}

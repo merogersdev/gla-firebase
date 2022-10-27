@@ -1,0 +1,9 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: $appWidth;
+}

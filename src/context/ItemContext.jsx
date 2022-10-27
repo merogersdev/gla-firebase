@@ -1,14 +1,18 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState } from 'react';
 
+// Firebase Functions
 import {
   collection,
   getDocs,
   addDoc,
   doc,
   deleteDoc,
-} from "firebase/firestore";
-import { db } from "../config/firebase.config";
+} from 'firebase/firestore';
 
+// Firebase Config
+import { db } from '../config/firebase.config';
+
+// Main Item Context
 const ItemContext = createContext();
 
 export const ItemProvider = ({ children }) => {
@@ -16,12 +20,13 @@ export const ItemProvider = ({ children }) => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const itemsColRef = collection(db, "items");
+  // Item Collection Reference
+  const itemsColRef = collection(db, 'items');
 
   // GET items
   const getItems = async () => {
     try {
-      const data = await getDocs(collection(db, "items"));
+      const data = await getDocs(collection(db, 'items'));
       const itemList = data.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
@@ -57,7 +62,7 @@ export const ItemProvider = ({ children }) => {
   // DELETE item
   const deleteItem = async (id) => {
     try {
-      const docRef = doc(db, "items", id);
+      const docRef = doc(db, 'items', id);
       deleteDoc(docRef);
       const newItems = items.filter((item) => item.id !== id);
       setItems([...newItems]);
@@ -70,12 +75,11 @@ export const ItemProvider = ({ children }) => {
     <ItemContext.Provider
       value={{
         items,
+        loading,
+        error,
         getItems,
         addItem,
         deleteItem,
-        loading,
-        setLoading,
-        error,
       }}
     >
       {children}
