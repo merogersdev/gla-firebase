@@ -8,6 +8,9 @@
   &__label {
     @include flex-center;
     position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1),
+      0 0.25rem 0.25rem rgba(0, 0, 0, 0.1);
+    border-radius: 0.2rem;
   }
 
   &__input {

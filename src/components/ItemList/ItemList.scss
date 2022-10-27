@@ -3,7 +3,7 @@
 
 .item-list {
   @include flex-center;
-
+  margin-bottom: 2rem;
   &__items {
     width: 15rem;
 
