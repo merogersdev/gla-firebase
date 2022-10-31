@@ -3,8 +3,7 @@ import React, { useContext } from 'react';
 import './Item.scss';
 
 // Toast
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 import ItemContext from '../../context/ItemContext';
 
@@ -21,18 +20,7 @@ const Item = ({ item }) => {
   return (
     <li className='item'>
       <span className='item__name'>{item.name}</span>
-      <ToastContainer
-        position='top-center'
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme='light'
-      />
+
       <button
         className='button button--minus'
         onClick={() => handleDelete(item.id)}

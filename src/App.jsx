@@ -11,6 +11,10 @@ import Main from './components/Main/Main';
 // Context
 import { ItemProvider } from './context/ItemContext';
 
+// Toast
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const App = () => {
   return (
     <ItemProvider>
@@ -19,6 +23,18 @@ const App = () => {
         <Container>
           <ItemForm />
           <ItemList />
+          <ToastContainer
+            position='top-center'
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme='light'
+          />
         </Container>
       </Main>
     </ItemProvider>

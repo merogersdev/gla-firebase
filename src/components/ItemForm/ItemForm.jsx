@@ -1,8 +1,7 @@
 import React, { useState, useContext } from 'react';
 
 // Toast
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 import './ItemForm.scss';
 
@@ -25,6 +24,12 @@ const ItemForm = () => {
     // If already in list, message and return
     if (name.length === 0) {
       toast('Please enter an item');
+      return;
+    }
+
+    // If item too long, reject
+    if (name.length > 15) {
+      toast('Item name too long');
       return;
     }
 
@@ -56,18 +61,6 @@ const ItemForm = () => {
           <FaPlus className='button__icon' />
         </button>
       </label>
-      <ToastContainer
-        position='top-center'
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme='light'
-      />
     </form>
   );
 };
