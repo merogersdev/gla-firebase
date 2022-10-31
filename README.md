@@ -12,10 +12,11 @@ Testing React + Firebase as an alternative to the MERN stack.
 - Notifications with React Toastify
 - Deployment via Docker
 - Yarn instead of NPM
+- State handled by useContext + useReducer
 
 ## Development
 
-2. Sign up for [Firebase](https://duckduckgo.com) and create Web App.
+2. Sign up for [Firebase](https://firebase.google.com/) and create Web App.
 1. Clone repository and create a .env file in the root directory. Add your App credentials to .env file:
 
 /.env
