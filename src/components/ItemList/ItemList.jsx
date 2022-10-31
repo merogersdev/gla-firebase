@@ -1,13 +1,14 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext } from 'react';
 
-import { motion, AnimatePresence } from "framer-motion";
+// Framer Motion for Animations
+import { motion, AnimatePresence } from 'framer-motion';
 
-import "./ItemList.scss";
+import './ItemList.scss';
 
-import Item from "../Item/Item";
-import Message from "../Message/Message";
+import Item from '../Item/Item';
+import Message from '../Message/Message';
 
-import ItemContext from "../../context/ItemContext";
+import ItemContext from '../../context/ItemContext';
 
 const ItemList = () => {
   const { items, getItems, loading, error } = useContext(ItemContext);
@@ -17,13 +18,9 @@ const ItemList = () => {
     getItems();
   }, []);
 
-  // Sort by name alphabetically
+  // Create copy of state, and sort by name alphabetically
   const sortedItems =
     items && items.sort((a, b) => a.name.localeCompare(b.name));
-
-  useEffect(() => {
-    getItems();
-  }, []);
 
   // Display loading message
   if (loading) {
@@ -32,14 +29,14 @@ const ItemList = () => {
 
   // If error fetching, display error
   if (error) {
-    return <Message type="error" message="Error fetching items" />;
+    return <Message type='error' message='Error fetching items' />;
   }
 
   return (
-    <div className="item-list">
-      <ul className="item-list__items">
+    <div className='item-list'>
+      <ul className='item-list__items'>
         <AnimatePresence>
-          {sortedItems.length > 0 ? (
+          {items && sortedItems.length > 0 ? (
             sortedItems.map((item) => (
               <motion.div
                 key={item.id}
@@ -51,7 +48,7 @@ const ItemList = () => {
               </motion.div>
             ))
           ) : (
-            <Message message="No items to display" />
+            <Message message='No items to display' />
           )}
         </AnimatePresence>
       </ul>

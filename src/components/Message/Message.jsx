@@ -1,9 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import { motion, AnimatePresence } from "framer-motion";
+// Framer Motion for Animations
+import { motion, AnimatePresence } from 'framer-motion';
 
-import "./Message.scss";
+import './Message.scss';
 
 const Message = ({ type, message }) => {
   return (
@@ -25,8 +26,8 @@ Message.propTypes = {
 };
 
 Message.defaultProps = {
-  type: "info",
-  message: "Loading...",
+  type: 'info',
+  message: 'Loading...',
 };
 
 export default Message;
