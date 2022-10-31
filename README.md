@@ -1,6 +1,6 @@
 # Grocery List App
 
-Mini-Project
+![Screenshot](/public/screenshot/gla-firebase-screen.png?raw=true 'GLA Firebase Screenshot')
 
 ## Goal
 
