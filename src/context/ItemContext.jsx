@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useReducer } from 'react';
 
 // Firebase Functions
 import {
@@ -15,10 +15,11 @@ import { db } from '../config/firebase.config';
 // Main Item Context
 const ItemContext = createContext();
 
+// Item Reducer
+import ItemReducer, { INITIAL_STATE, ACTIONS } from './ItemReducer';
+
 export const ItemProvider = ({ children }) => {
-  const [items, setItems] = useState(null);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [state, dispatch] = useReducer(ItemReducer, INITIAL_STATE);
 
   // Item Collection Reference
   const itemsColRef = collection(db, 'items');
@@ -31,12 +32,11 @@ export const ItemProvider = ({ children }) => {
         id: doc.id,
         ...doc.data(),
       }));
-      setItems(itemList);
-      setLoading(false);
-      setError(false);
+      dispatch({ type: ACTIONS.GET_ITEMS, payload: itemList });
     } catch (error) {
-      setLoading(false);
-      setError(true);
+      dispatch({
+        type: ACTIONS.GET_FAIL,
+      });
       console.error(error.message);
     }
   };
@@ -53,7 +53,7 @@ export const ItemProvider = ({ children }) => {
         name,
         inCart: false,
       };
-      setItems([newItem, ...items]);
+      dispatch({ type: ACTIONS.ADD_ITEM, payload: newItem });
     } catch (error) {
       console.error(error.message);
     }
@@ -64,19 +64,20 @@ export const ItemProvider = ({ children }) => {
     try {
       const docRef = doc(db, 'items', id);
       deleteDoc(docRef);
-      const newItems = items.filter((item) => item.id !== id);
-      setItems([...newItems]);
+      const newItems = state.items.filter((item) => item.id !== id);
+      dispatch({ type: ACTIONS.DELETE_ITEM, payload: newItems });
     } catch (error) {
       console.log(error);
     }
   };
 
+  // Return State items individually, with functions
   return (
     <ItemContext.Provider
       value={{
-        items,
-        loading,
-        error,
+        items: state.items,
+        loading: state.loading,
+        error: state.error,
         getItems,
         addItem,
         deleteItem,
