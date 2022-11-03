@@ -38,8 +38,12 @@ const ItemForm = () => {
       toast.error("Item already exists");
       return;
     }
+
+    // Capitalize first letter of string
+    const capitalizedName = name[0].toUpperCase() + name.substring(1);
+
     // Add to Context, display message, and reset form
-    addItem(name);
+    addItem(capitalizedName);
     toast.success("Item added successfully");
     setName("");
   };
