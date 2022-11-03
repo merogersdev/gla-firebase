@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import PropTypes from "prop-types";
 
 import "./Item.scss";
 
@@ -29,6 +30,18 @@ const Item = ({ item }) => {
       </button>
     </li>
   );
+};
+
+Item.PropTypes = {
+  item: PropTypes.object,
+};
+
+Item.defaultProps = {
+  item: {
+    name: "Default Item",
+    inCart: false,
+    id: Date.now(),
+  },
 };
 
 export default Item;
