@@ -23,4 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
+# ENV
 .env
+service.yaml
+policy.yaml
