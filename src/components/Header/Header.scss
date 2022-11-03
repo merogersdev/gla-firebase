@@ -1,5 +1,5 @@
-@use '../../styles/partials/mixins' as *;
-@use '../../styles/partials/variables' as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
 
 .header {
   @include flex-center;
@@ -8,6 +8,8 @@
   width: 100%;
   line-height: 3rem;
   background-color: $secondaryColor;
+  position: relative;
+  z-index: 1;
   &__logo {
     color: $textColor;
     font-size: 1.2rem;
