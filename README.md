@@ -1,6 +1,6 @@
 # Grocery List App
 
-![Screenshot](/public/screenshot/gla-firebase-screen.png?raw=true 'GLA Firebase Screenshot')
+![Screenshot](/public/screenshot/gla-firebase-screen.png?raw=true "GLA Firebase Screenshot")
 
 ## Goal
 
@@ -13,6 +13,7 @@ Testing React + Firebase as an alternative to the MERN stack.
 - Deployment via Docker
 - Yarn instead of NPM
 - State handled by useContext + useReducer
+- List cached using useMemo
 
 ## Development
 
