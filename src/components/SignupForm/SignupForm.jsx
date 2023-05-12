@@ -9,19 +9,11 @@ import AuthContext from '../../context/auth/AuthContext';
 import { FaGoogle, FaUser } from 'react-icons/fa';
 
 const SignupForm = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-  });
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const { email, password } = formData;
-
-  const handleChange = (e) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const { user, login, loginWithGoogle } = useContext(AuthContext);
+  const { user, signup } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,7 +33,7 @@ const SignupForm = () => {
       return;
     }
 
-    login(email, password);
+    await signup(name, email, password);
   };
 
   return (
@@ -52,7 +44,7 @@ const SignupForm = () => {
           type='text'
           name='name'
           className='login-form__input'
-          onChange={handleChange}
+          onChange={(e) => setName(e.target.value)}
         />
       </label>
       <label htmlFor='email' className='login-form__label'>
@@ -61,7 +53,7 @@ const SignupForm = () => {
           type='text'
           name='email'
           className='login-form__input'
-          onChange={handleChange}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </label>
       <label htmlFor='password' className='login-form__label'>
@@ -70,7 +62,7 @@ const SignupForm = () => {
           type='password'
           name='password'
           className='login-form__input'
-          onChange={handleChange}
+          onChange={(e) => setPassword(e.target.value)}
         />
       </label>
       <button type='submit' className='button button--stretch'>

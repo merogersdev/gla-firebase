@@ -9,16 +9,8 @@ import AuthContext from '../../context/auth/AuthContext';
 import { FaGoogle, FaUser } from 'react-icons/fa';
 
 const LoginForm = () => {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
-
-  const { email, password } = formData;
-
-  const handleChange = (e) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const { user, login, loginWithGoogle } = useContext(AuthContext);
 
@@ -46,7 +38,7 @@ const LoginForm = () => {
           type='text'
           name='email'
           className='login-form__input'
-          onChange={handleChange}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </label>
       <label htmlFor='password' className='login-form__label'>
@@ -55,7 +47,7 @@ const LoginForm = () => {
           type='password'
           name='password'
           className='login-form__input'
-          onChange={handleChange}
+          onChange={(e) => setPassword(e.target.value)}
         />
       </label>
       <button type='submit' className='button button--stretch'>
