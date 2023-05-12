@@ -1,9 +1,9 @@
 @use '../../styles/partials/mixins' as *;
 
-.item-form {
-  @include flex-center;
-  margin: 2rem auto 2rem auto;
-  width: 100%;
+.login-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
   &__label {
     @include flex-center;
     position: relative;
@@ -11,6 +11,7 @@
       0 0.25rem 0.25rem rgba(0, 0, 0, 0.1);
     border-radius: 0.2rem;
     width: 100%;
+    margin-bottom: 1rem;
   }
   &__input {
     border-radius: 0.2rem;

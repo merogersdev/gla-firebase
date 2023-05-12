@@ -8,7 +8,7 @@ import "./ItemList.scss";
 import Item from "../Item/Item";
 import Message from "../Message/Message";
 
-import ItemContext from "../../context/ItemContext";
+import ItemContext from "../../context/item/ItemContext";
 
 const ItemList = () => {
   const { items, getItems, loading, error } = useContext(ItemContext);

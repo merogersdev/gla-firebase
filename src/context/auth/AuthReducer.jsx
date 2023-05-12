@@ -1,47 +1,48 @@
 // Hard set actions rather than just strings
 export const ACTIONS = {
-  GET_ITEMS: 'GET_ITEMS',
-  GET_FAIL: 'GET_FAIL',
-  ADD_ITEM: 'ADD_ITEM',
+  LOGIN: "LOGIN",
+  LOGIN_FAIL: "LOGIN_FAIL",
+  LOGOUT: "LOGOUT",
+  LOGOUT_FAIL: "LOGOUT_FAIL",
 };
 
 // Initial State for Application
-export const INITIAL_STATE = {
-  items: null,
+export const INITIAL_AUTH_STATE = {
+  user: null,
   loading: true,
   error: false,
 };
 
 // Item Reducer used in ItemContext
-const ItemReducer = (state, action) => {
+const AuthReducer = (state, action) => {
   switch (action.type) {
-    case ACTIONS.GET_ITEMS:
+    case ACTIONS.LOGIN:
       return {
-        items: action.payload,
+        user: action.payload,
         loading: false,
         error: false,
       };
-    case ACTIONS.GET_FAIL:
+    case ACTIONS.LOGIN_FAIL:
       return {
-        ...state,
+        user: action.payload,
         loading: false,
         error: true,
       };
-    case ACTIONS.ADD_ITEM:
+    case ACTIONS.LOGOUT:
       return {
-        items: [action.payload, ...state.items],
+        user: null,
         loading: false,
         error: false,
       };
-    case ACTIONS.DELETE_ITEM:
+    case ACTIONS.LOGOUT_FAIL:
       return {
-        items: [...action.payload],
+        user: action.payload,
         loading: false,
-        error: false,
+        error: true,
       };
     default:
       return state;
   }
 };
 
-export default ItemReducer;
+export default AuthReducer;

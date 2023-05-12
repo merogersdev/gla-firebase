@@ -6,7 +6,7 @@ import "./Item.scss";
 // Toast
 import { toast } from "react-toastify";
 
-import ItemContext from "../../context/ItemContext";
+import ItemContext from "../../context/item/ItemContext";
 
 import { FaMinus } from "react-icons/fa";
 
