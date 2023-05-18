@@ -7,10 +7,14 @@ import {
 } from 'firebase/auth';
 import { auth } from '../config/firebase';
 
+import { useNavigate } from 'react-router-dom';
+
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
+
+  const navigate = useNavigate();
 
   function logIn(email, password) {
     return signInWithEmailAndPassword(auth, email, password);
@@ -26,6 +30,9 @@ export function AuthProvider({ children }) {
     const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
       console.log('Auth', currentuser);
       setUser(currentuser);
+      if (auth !== null) {
+        navigate('/dashboard');
+      }
     });
 
     return () => {

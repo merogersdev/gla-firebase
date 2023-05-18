@@ -1,5 +1,4 @@
-import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 
 // Toast
 import { toast } from 'react-toastify';
@@ -7,14 +6,13 @@ import { toast } from 'react-toastify';
 import './LoginForm.scss';
 import { useFirebaseAuthContext } from '../../context/AuthContext';
 
-import { FaGoogle, FaUser, FaUserPlus } from 'react-icons/fa';
+import { FaGoogle, FaUser } from 'react-icons/fa';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { logIn } = useFirebaseAuthContext();
-  const navigate = useNavigate();
+  const { logIn, user } = useFirebaseAuthContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();

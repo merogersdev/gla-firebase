@@ -12,18 +12,22 @@ import SignupForm from './components/SignupForm/SignupForm';
 import Dashboard from './components/Dashboard/Dashboard';
 
 // Context
-import { ItemProvider } from './context/item/ItemContext';
 import { AuthProvider } from './context/AuthContext';
 
 // Toast
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+// Tanstack Query
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+const queryClient = new QueryClient();
+
 const App = () => {
   return (
     <Router>
-      <AuthProvider>
-        <ItemProvider>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
           <Header title='Grocery List App' />
           <Main>
             <Container>
@@ -47,8 +51,9 @@ const App = () => {
               />
             </Container>
           </Main>
-        </ItemProvider>
-      </AuthProvider>
+        </AuthProvider>
+        <ReactQueryDevtools initialIsOpen />
+      </QueryClientProvider>
     </Router>
   );
 };

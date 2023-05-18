@@ -29,6 +29,7 @@ const Dashboard = () => {
       </div>
       {/* <ItemForm />
       <ItemList /> */}
+      <ItemList />
     </>
   );
 };
