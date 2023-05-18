@@ -13,7 +13,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 
 // Context
 import { ItemProvider } from './context/item/ItemContext';
-import { AuthProvider } from './context/auth/AuthContext';
+import { AuthProvider } from './context/AuthContext';
 
 // Toast
 import { ToastContainer } from 'react-toastify';

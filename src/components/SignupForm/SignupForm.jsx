@@ -1,10 +1,12 @@
 import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FaArrowLeft } from 'react-icons/fa';
 
 // Toast
 import { toast } from 'react-toastify';
 
 import './SignupForm.scss';
-import AuthContext from '../../context/auth/AuthContext';
+import { useFirebaseAuthContext } from '../../context/AuthContext';
 
 import { FaGoogle, FaUser } from 'react-icons/fa';
 
@@ -13,7 +15,8 @@ const SignupForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { user, signup } = useContext(AuthContext);
+  const { user, signup } = useFirebaseAuthContext();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -68,6 +71,15 @@ const SignupForm = () => {
       <button type='submit' className='button button--stretch'>
         Sign Up
         <FaUser className='button--icon' />
+      </button>
+      <div className='signup-form__rule'></div>
+      <button
+        className='button button--stretch button--secondary-outline'
+        type='button'
+        onClick={() => navigate('/')}
+      >
+        Back
+        <FaArrowLeft className='button--icon' />
       </button>
     </form>
   );

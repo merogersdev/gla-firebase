@@ -1,18 +1,20 @@
 import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // Toast
 import { toast } from 'react-toastify';
 
 import './LoginForm.scss';
-import AuthContext from '../../context/auth/AuthContext';
+import { useFirebaseAuthContext } from '../../context/AuthContext';
 
-import { FaGoogle, FaUser } from 'react-icons/fa';
+import { FaGoogle, FaUser, FaUserPlus } from 'react-icons/fa';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { user, login, loginWithGoogle } = useContext(AuthContext);
+  const { logIn } = useFirebaseAuthContext();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,7 +29,25 @@ const LoginForm = () => {
       return;
     }
 
-    login(email, password);
+    try {
+      const result = await logIn(email, password);
+      console.log(result);
+      navigate('/dashboard');
+    } catch (error) {
+      // User-readable error message to user
+      switch (error.message) {
+        case 'FirebaseError: Firebase: Error (auth/wrong-password)':
+          toast.error('Wrong Credentails');
+          break;
+        case 'Firebase: Error (auth/user-not-found).':
+          toast.error('User not found');
+          break;
+        default:
+          toast.error('An Unexpected Error Occured');
+          console.log(error.message);
+          break;
+      }
+    }
   };
 
   return (
@@ -50,14 +70,31 @@ const LoginForm = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
       </label>
+
       <button type='submit' className='button button--stretch'>
-        Login
+        Login with Email
         <FaUser className='button--icon' />
       </button>
-      <button type='submit' className='button button--stretch button--login'>
+
+      <div className='login-form__rule'>
+        <div className='login-form__rule-text'>or</div>
+      </div>
+      <button className='button button--stretch button--login'>
         Login with Google
         <FaGoogle className='button--icon' />
       </button>
+      <div className='login-form__center'>
+        <p>
+          Not a user?
+          <span
+            className='login-form__signup'
+            onClick={() => navigate('/signup')}
+          >
+            Sign Up
+          </span>
+          .
+        </p>
+      </div>
     </form>
   );
 };

@@ -1,4 +1,5 @@
 @use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
 
 .login-form {
   display: flex;
@@ -25,5 +26,26 @@
     &:focus {
       outline: none;
     }
+  }
+  &__rule {
+    @include flex-center;
+    padding-top: 1rem;
+    margin-bottom: 1.75rem;
+    border-bottom: 1px solid $mutedColor;
+    position: relative;
+  }
+  &__rule-text {
+    position: absolute;
+    padding: 0px 4px;
+    color: $secondaryColor;
+    background-color: $backgroundColor;
+  }
+  &__signup {
+    margin-left: 0.25rem;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  &__center {
+    @include flex-center;
   }
 }
