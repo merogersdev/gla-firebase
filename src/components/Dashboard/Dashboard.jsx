@@ -16,8 +16,6 @@ const Dashboard = () => {
     return <Navigate to='/' replace />;
   }
 
-  console.log('User', user);
-
   return (
     <>
       <div className='dashboard'>
