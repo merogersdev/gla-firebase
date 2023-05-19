@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from 'react';
+import React, { createContext, useReducer } from "react";
 
 // Firebase Functions
 import {
@@ -7,27 +7,27 @@ import {
   addDoc,
   doc,
   deleteDoc,
-} from 'firebase/firestore';
+} from "firebase/firestore";
 
 // Firebase Config
-import { db } from '../config/firebase.config';
+import { db } from "../../config/firebase";
+
+// Item Reducer
+import ItemReducer, { INITIAL_ITEM_STATE, ACTIONS } from "./ItemReducer";
 
 // Main Item Context
 const ItemContext = createContext();
 
-// Item Reducer
-import ItemReducer, { INITIAL_STATE, ACTIONS } from './ItemReducer';
-
 export const ItemProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(ItemReducer, INITIAL_STATE);
+  const [state, dispatch] = useReducer(ItemReducer, INITIAL_ITEM_STATE);
 
   // Item Collection Reference
-  const itemsColRef = collection(db, 'items');
+  const itemsColRef = collection(db, "items");
 
   // GET items
   const getItems = async () => {
     try {
-      const data = await getDocs(collection(db, 'items'));
+      const data = await getDocs(collection(db, "items"));
       const itemList = data.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
@@ -62,7 +62,7 @@ export const ItemProvider = ({ children }) => {
   // DELETE item
   const deleteItem = async (id) => {
     try {
-      const docRef = doc(db, 'items', id);
+      const docRef = doc(db, "items", id);
       deleteDoc(docRef);
       const newItems = state.items.filter((item) => item.id !== id);
       dispatch({ type: ACTIONS.DELETE_ITEM, payload: newItems });

@@ -1,12 +1,12 @@
 // Hard set actions rather than just strings
 export const ACTIONS = {
-  GET_ITEMS: 'GET_ITEMS',
-  GET_FAIL: 'GET_FAIL',
-  ADD_ITEM: 'ADD_ITEM',
+  GET_ITEMS: "GET_ITEMS",
+  GET_FAIL: "GET_FAIL",
+  ADD_ITEM: "ADD_ITEM",
 };
 
 // Initial State for Application
-export const INITIAL_STATE = {
+export const INITIAL_ITEM_STATE = {
   items: null,
   loading: true,
   error: false,

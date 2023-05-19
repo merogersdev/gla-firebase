@@ -1,0 +1,20 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+.signup-form {
+  &__back {
+    margin-left: 0.25rem;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  &__center {
+    @include flex-center;
+  }
+  &__rule {
+    @include flex-center;
+    padding-top: 1rem;
+    margin-bottom: 1.75rem;
+    border-bottom: 1px solid $mutedColor;
+    position: relative;
+  }
+}

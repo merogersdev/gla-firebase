@@ -1,0 +1,51 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  &__label {
+    @include flex-center;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1),
+      0 0.25rem 0.25rem rgba(0, 0, 0, 0.1);
+    border-radius: 0.2rem;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  &__input {
+    border-radius: 0.2rem;
+    border: none;
+    padding: 0 1rem;
+    width: 100%;
+    height: 3rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    &:focus {
+      outline: none;
+    }
+  }
+  &__rule {
+    @include flex-center;
+    padding-top: 1rem;
+    margin-bottom: 1.75rem;
+    border-bottom: 1px solid $mutedColor;
+    position: relative;
+  }
+  &__rule-text {
+    position: absolute;
+    padding: 0px 4px;
+    color: $secondaryColor;
+    background-color: $backgroundColor;
+  }
+  &__signup {
+    margin-left: 0.25rem;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  &__center {
+    @include flex-center;
+  }
+}
