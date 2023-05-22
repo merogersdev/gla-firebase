@@ -5,15 +5,21 @@ import {
   addDoc,
   doc,
   deleteDoc,
+  query,
+  orderBy,
 } from 'firebase/firestore';
 
 // Firebase Config
-import { db } from '../../config/firebase';
+import { db } from '../config/firebase';
+
+// Item Collection Reference
+const itemsColRef = collection(db, 'items');
 
 // GET Items
-export const getItems = async () => {
+const getItems = async () => {
   try {
-    const data = await getDocs(collection(db, 'items'));
+    // Get all items, order alphabetically
+    const data = await getDocs(query(itemsColRef, orderBy('name', 'desc')));
     const itemList = data.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
@@ -23,3 +29,33 @@ export const getItems = async () => {
     console.error(error.message);
   }
 };
+
+// Add Item
+export const addItem = async ({ name, userID }) => {
+  try {
+    const item = await addDoc(itemsColRef, {
+      name,
+      userID,
+    });
+    const newItem = {
+      id: item.id,
+      userID,
+      name,
+    };
+    return newItem;
+  } catch (error) {
+    console.error(error.message);
+  }
+};
+
+// Delete Item
+export const deleteItem = async (itemID) => {
+  try {
+    const result = await deleteDoc(doc(db, 'items', itemID));
+    return result;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export default getItems;

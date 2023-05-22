@@ -1,35 +1,67 @@
-import { useContext } from 'react';
+import { useMemo } from 'react';
 import { Navigate } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 
+// Components
 import ItemList from '../ItemList/ItemList';
 import ItemForm from '../ItemForm/ItemForm';
+import Message from '../Message/Message';
 
+// Context and Auth
 import { useFirebaseAuthContext } from '../../context/AuthContext';
+import getItems from '../../api/itemApi';
 
+// Styles
 import './Dashboard.scss';
 
 const Dashboard = () => {
   const { user, logOut } = useFirebaseAuthContext();
+
+  const {
+    isLoading,
+    error,
+    data: items,
+  } = useQuery({
+    queryKey: ['items'],
+    queryFn: getItems,
+  });
+
+  const sortedItems = useMemo(() => {
+    return items && items.sort((a, b) => a.name.localeCompare(b.name));
+  }, [items]);
 
   // If no user, redirect to login
   if (user === null) {
     return <Navigate to='/' replace />;
   }
 
+  // Display loading message
+  if (isLoading) {
+    return <Message />;
+  }
+
+  // If error fetching, display persisting error
+  if (error) {
+    return <Message type='error' message='Error fetching items' />;
+  }
+
   return (
     <>
       <div className='dashboard'>
-        <div>Hi, {user.displayName}</div>
-        <button
-          className='button button--secondary button--mini'
-          onClick={() => logOut()}
-        >
-          Logout
-        </button>
+        <div className='dashboard__user'>
+          <div className='dashboard__greeting'>Hi, {user.displayName}</div>
+          <button
+            className='button button--secondary button--mini'
+            onClick={() => logOut()}
+          >
+            Logout
+          </button>
+        </div>
       </div>
-      {/* <ItemForm />
-      <ItemList /> */}
-      <ItemList />
+      <div className='dashboard__container'>
+        <ItemForm />
+        <ItemList items={sortedItems} />
+      </div>
     </>
   );
 };

@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 // Framer Motion for Animations
 import { motion, AnimatePresence } from 'framer-motion';
 
+// Styles
 import './Message.scss';
 
 const Message = ({ type, message }) => {
@@ -18,16 +18,6 @@ const Message = ({ type, message }) => {
       </motion.div>
     </AnimatePresence>
   );
-};
-
-Message.propTypes = {
-  type: PropTypes.string,
-  message: PropTypes.string,
-};
-
-Message.defaultProps = {
-  type: 'info',
-  message: 'Loading...',
 };
 
 export default Message;

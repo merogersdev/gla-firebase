@@ -1,21 +1,36 @@
-import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
-
-import './Item.scss';
+import React from 'react';
+import { useQueryClient, useMutation } from '@tanstack/react-query';
 
 // Toast
 import { toast } from 'react-toastify';
 
-import ItemContext from '../../context/item/ItemContext';
-
+// Icons
 import { FaMinus } from 'react-icons/fa';
 
-const Item = ({ item }) => {
-  //const { deleteItem } = useContext(ItemContext);
+// Query
+import { deleteItem } from '../../api/itemApi';
 
-  const handleDelete = (id) => {
-    // deleteItem(id);
-    toast.success('Item deleted successfully');
+// Styles
+import './Item.scss';
+
+const Item = ({ item }) => {
+  const queryClient = useQueryClient();
+
+  const deleteItemMutation = useMutation({
+    mutationFn: deleteItem,
+    onSuccess: async () => {
+      toast.success('Item deleted successfully');
+      queryClient.invalidateQueries({ queryKey: ['items'] });
+    },
+    onError: async (error) => {
+      toast.error('Error deleting item');
+      console.log(error);
+    },
+  });
+
+  const handleDelete = (item) => {
+    console.log(item);
+    deleteItemMutation.mutate(item.id);
   };
 
   return (
@@ -24,24 +39,12 @@ const Item = ({ item }) => {
 
       <button
         className='button button--minus'
-        onClick={() => handleDelete(item.id)}
+        onClick={() => handleDelete(item)}
       >
         <FaMinus className='button__icon' />
       </button>
     </li>
   );
-};
-
-Item.PropTypes = {
-  item: PropTypes.object,
-};
-
-Item.defaultProps = {
-  item: {
-    name: 'Default Item',
-    inCart: false,
-    id: Date.now(),
-  },
 };
 
 export default Item;

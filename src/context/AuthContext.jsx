@@ -1,13 +1,18 @@
 import { createContext, useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+// Firebase Auth
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithPopup,
   signOut,
 } from 'firebase/auth';
-import { auth } from '../config/firebase';
 
-import { useNavigate } from 'react-router-dom';
+// Firebase Config
+import { auth } from '../config/firebase';
 
 const AuthContext = createContext();
 
@@ -22,19 +27,23 @@ export function AuthProvider({ children }) {
   function signUp(email, password) {
     return createUserWithEmailAndPassword(auth, email, password);
   }
+  function signInWithGoogle() {
+    return signInWithPopup(auth, provider);
+  }
   function logOut() {
     return signOut(auth);
   }
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
-      console.log('Auth', currentuser);
       setUser(currentuser);
+      // If user present, redirect to dashboard - session persistence
       if (auth !== null) {
         navigate('/dashboard');
       }
     });
 
+    // Auth Cleanup
     return () => {
       unsubscribe();
     };

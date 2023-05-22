@@ -1,6 +1,17 @@
+@use '../../styles/partials/mixins' as *;
+
 .dashboard {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 2rem 0;
+  flex-direction: column;
+  &__container {
+    @include container;
+  }
+  &__user {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+  }
+  &__greeting {
+    margin-bottom: 0.5rem;
+  }
 }
