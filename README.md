@@ -1,6 +1,6 @@
 # Grocery List App
 
-![Screenshot](/public/screenshot/gla-firebase-screen.png?raw=true "GLA Firebase Screenshot")
+![Screenshot](/public/screenshot/gla-firebase-screen.png?raw=true 'GLA Firebase Screenshot')
 
 ## Goal
 
@@ -12,7 +12,8 @@ Testing React + Firebase as an alternative to the MERN stack.
 - Notifications with React Toastify
 - Deployment via Docker
 - Yarn instead of NPM
-- State handled by useContext + useReducer
+- Auth State handled by useContext
+- Firebase Fetching handled by @tanstack Query
 - List cached using useMemo
 
 ## Development
@@ -45,12 +46,6 @@ This app is designed to be deployed via docker container to your favourite Cloud
 To build docker image, from root directory run:
 
 `docker build -t gla-firebase .`
-
-### Manual Deployment
-
-To create a production build of the app to deploy manually, run:
-
-`yarn run build`
 
 ## Tags
 
