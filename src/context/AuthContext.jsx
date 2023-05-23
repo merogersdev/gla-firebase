@@ -12,7 +12,7 @@ import {
 } from 'firebase/auth';
 
 // Firebase Config
-import { auth } from '../config/firebase';
+import { auth, googleProvider } from '../config/firebase';
 
 const AuthContext = createContext();
 
@@ -29,7 +29,7 @@ export function AuthProvider({ children }) {
     return createUserWithEmailAndPassword(auth, email, password);
   }
   function signInWithGoogle() {
-    return signInWithPopup(auth, GoogleAuthProvider);
+    return signInWithPopup(auth, googleProvider);
   }
   function logOut() {
     return signOut(auth);

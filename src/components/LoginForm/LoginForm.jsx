@@ -14,7 +14,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { logIn, authLoading, logInWithGoogle } = useFirebaseAuthContext();
+  const { logIn, authLoading, signInWithGoogle } = useFirebaseAuthContext();
 
   const navigate = useNavigate();
 
@@ -79,15 +79,19 @@ const LoginForm = () => {
 
         <button type='submit' className='login-form__email-btn'>
           Login with Email
-          <FaUser className='button--icon' />
+          <FaUser className='login-form__icon' />
         </button>
 
         <div className='login-form__rule'>
           <div className='login-form__rule-text'>or</div>
         </div>
-        <button className='login-form__google-btn' type='button'>
+        <button
+          className='login-form__google-btn'
+          type='button'
+          onClick={() => signInWithGoogle()}
+        >
           Login with Google
-          <FaGoogle className='button--icon' />
+          <FaGoogle className='login-form__icon' />
         </button>
         <div className='login-form__center'>
           <p>

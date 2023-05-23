@@ -63,10 +63,19 @@
 
 @mixin rule {
   @include flex-center;
-  padding-top: 1rem;
+  padding-top: 1.75rem;
   margin-bottom: 1.75rem;
+  height: 1px;
   border-bottom: 1px solid $mutedColor;
   position: relative;
+}
+
+@mixin rule-text {
+  position: absolute;
+  padding: 0px 1rem;
+  color: $mutedColor;
+  background-color: $backgroundColor;
+  font-weight: 700;
 }
 
 @mixin button($background) {
@@ -86,4 +95,11 @@
   &:active {
     background-color: darken($background, 5%);
   }
+}
+
+@mixin icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 1rem;
 }

@@ -14,11 +14,7 @@
     @include rule;
   }
   &__rule-text {
-    position: absolute;
-    padding: 0px 1rem;
-    color: $mutedColor;
-    background-color: $backgroundColor;
-    font-weight: 700;
+    @include rule-text;
   }
   &__signup {
     margin-left: 0.25rem;
@@ -45,5 +41,8 @@
   &__google-btn {
     @include button($infoColor);
     border-radius: $borderRadius;
+  }
+  &__icon {
+    @include icon;
   }
 }

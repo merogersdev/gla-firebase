@@ -3,7 +3,7 @@
 
 .item-form {
   @include flex-center;
-  margin: 2rem auto 2rem auto;
+  margin: 2rem auto 1.5rem auto;
   width: 100%;
   &__label {
     @include label;

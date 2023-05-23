@@ -74,18 +74,20 @@ const SignupForm = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        <button type='submit' className='button button--stretch'>
+        <button type='submit' className='signup-form__signup-btn'>
           Sign Up
-          <FaUser className='button--icon' />
+          <FaUser className='signup-form__icon' />
         </button>
-        <div className='signup-form__rule'></div>
+        <div className='signup-form__rule'>
+          <div className='signup-form__rule-text'>or</div>
+        </div>
         <button
-          className='button button--stretch button--secondary-outline'
+          className='signup-form__back-btn'
           type='button'
           onClick={() => navigate('/')}
         >
-          Back
-          <FaArrowLeft className='button--icon' />
+          Go Back
+          <FaArrowLeft className='signup-form__icon' />
         </button>
       </form>
     </div>

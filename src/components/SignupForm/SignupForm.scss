@@ -14,6 +14,9 @@
   &__rule {
     @include rule;
   }
+  &__rule-text {
+    @include rule-text;
+  }
   &__h1 {
     @include h1;
   }
@@ -25,5 +28,16 @@
   }
   &__container {
     @include container;
+  }
+  &__signup-btn {
+    @include button($primaryColor);
+    border-radius: $borderRadius;
+  }
+  &__back-btn {
+    @include button($secondaryColor);
+    border-radius: $borderRadius;
+  }
+  &__icon {
+    @include icon;
   }
 }
