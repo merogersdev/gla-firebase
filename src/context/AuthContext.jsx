@@ -18,6 +18,7 @@ const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [authLoading, setAuthLoading] = useState(true);
 
   const navigate = useNavigate();
 
@@ -28,7 +29,7 @@ export function AuthProvider({ children }) {
     return createUserWithEmailAndPassword(auth, email, password);
   }
   function signInWithGoogle() {
-    return signInWithPopup(auth, provider);
+    return signInWithPopup(auth, GoogleAuthProvider);
   }
   function logOut() {
     return signOut(auth);
@@ -41,6 +42,7 @@ export function AuthProvider({ children }) {
       if (auth !== null) {
         navigate('/dashboard');
       }
+      setAuthLoading(false);
     });
 
     // Auth Cleanup
@@ -50,7 +52,9 @@ export function AuthProvider({ children }) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, logIn, signUp, logOut }}>
+    <AuthContext.Provider
+      value={{ user, authLoading, logIn, signUp, logOut, signInWithGoogle }}
+    >
       {children}
     </AuthContext.Provider>
   );

@@ -14,7 +14,7 @@ import { addItem } from '../../api/itemApi';
 // Styles
 import './ItemForm.scss';
 
-const ItemForm = () => {
+const ItemForm = ({ items }) => {
   const [name, setName] = useState('');
 
   const { user } = useFirebaseAuthContext();
@@ -60,7 +60,7 @@ const ItemForm = () => {
           onChange={(e) => setName(e.target.value)}
           maxLength={15}
         />
-        <button className='button button--add' type='submit'>
+        <button className='item-form__add-btn' type='submit'>
           <FaPlus className='button__icon' />
         </button>
       </label>

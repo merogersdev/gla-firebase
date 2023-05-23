@@ -37,10 +37,7 @@ const Item = ({ item }) => {
     <li className='item'>
       <span className='item__name'>{item.name}</span>
 
-      <button
-        className='button button--minus'
-        onClick={() => handleDelete(item)}
-      >
+      <button className='item__delete-btn' onClick={() => handleDelete(item)}>
         <FaMinus className='button__icon' />
       </button>
     </li>

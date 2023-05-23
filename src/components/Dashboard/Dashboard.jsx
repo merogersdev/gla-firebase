@@ -37,9 +37,14 @@ const Dashboard = () => {
 
   // Display loading message
   if (isLoading) {
-    return <Message />;
+    return (
+      <div className='login-form__container'>
+        <div className='login-form__message'>
+          <Message type='info' message='Loading List...' />
+        </div>
+      </div>
+    );
   }
-
   // If error fetching, display persisting error
   if (error) {
     return <Message type='error' message='Error fetching items' />;
@@ -50,16 +55,13 @@ const Dashboard = () => {
       <div className='dashboard'>
         <div className='dashboard__user'>
           <div className='dashboard__greeting'>Hi, {user.displayName}</div>
-          <button
-            className='button button--secondary button--mini'
-            onClick={() => logOut()}
-          >
+          <button className='dashboard__button' onClick={() => logOut()}>
             Logout
           </button>
         </div>
       </div>
       <div className='dashboard__container'>
-        <ItemForm />
+        <ItemForm items={sortedItems} />
         <ItemList items={sortedItems} />
       </div>
     </>

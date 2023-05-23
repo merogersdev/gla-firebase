@@ -1,9 +1,10 @@
 import React from 'react';
 
+//Icons
+import { SiFirebase } from 'react-icons/si';
+
 // Styles
 import './Header.scss';
-
-import { SiFirebase } from 'react-icons/si';
 
 const Header = ({ title }) => {
   return (

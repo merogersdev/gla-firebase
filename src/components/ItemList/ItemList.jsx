@@ -15,7 +15,7 @@ const ItemList = ({ items }) => {
     <div className='item-list'>
       <ul className='item-list__items'>
         <AnimatePresence>
-          {items.length === 0 || items !== null ? (
+          {items.length !== 0 || items !== null ? (
             items.map((item) => (
               <motion.div
                 key={item.id}

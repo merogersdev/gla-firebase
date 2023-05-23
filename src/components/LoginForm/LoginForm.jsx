@@ -8,12 +8,13 @@ import { useFirebaseAuthContext } from '../../context/AuthContext';
 
 import { FaGoogle, FaUser } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import Spinner from '../Spinner/Spinner';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { logIn, user } = useFirebaseAuthContext();
+  const { logIn, authLoading, logInWithGoogle } = useFirebaseAuthContext();
 
   const navigate = useNavigate();
 
@@ -51,6 +52,8 @@ const LoginForm = () => {
     }
   };
 
+  if (authLoading) return <Spinner />;
+
   return (
     <div className='login-form__container'>
       <form onSubmit={handleSubmit} className='login-form'>
@@ -74,7 +77,7 @@ const LoginForm = () => {
           />
         </label>
 
-        <button type='submit' className='button button--stretch'>
+        <button type='submit' className='login-form__email-btn'>
           Login with Email
           <FaUser className='button--icon' />
         </button>
@@ -82,7 +85,7 @@ const LoginForm = () => {
         <div className='login-form__rule'>
           <div className='login-form__rule-text'>or</div>
         </div>
-        <button className='button button--stretch button--login' type='button'>
+        <button className='login-form__google-btn' type='button'>
           Login with Google
           <FaGoogle className='button--icon' />
         </button>

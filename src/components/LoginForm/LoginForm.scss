@@ -34,4 +34,16 @@
   &__container {
     @include container;
   }
+  &__message {
+    margin-top: 2rem;
+  }
+
+  &__email-btn {
+    @include button($primaryColor);
+    border-radius: $borderRadius;
+  }
+  &__google-btn {
+    @include button($infoColor);
+    border-radius: $borderRadius;
+  }
 }

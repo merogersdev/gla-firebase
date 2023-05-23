@@ -11,4 +11,9 @@
   &__input {
     @include input;
   }
+  &__add-btn {
+    @include button($primaryColor);
+    border-top-right-radius: $borderRadius;
+    border-bottom-right-radius: $borderRadius;
+  }
 }
