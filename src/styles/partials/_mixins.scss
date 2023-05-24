@@ -1,5 +1,105 @@
+@use './variables' as *;
+
+/* --- Utility --- */
+
 @mixin flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* --- Typography --- */
+
+@mixin h1 {
+  margin: 0 0 2rem 0;
+  padding: 0;
+  text-align: center;
+  color: $secondaryColor;
+}
+
+/* --- Elements --- */
+
+@mixin main {
+  background-color: $backgroundColor;
+  min-height: calc(100vh - 3rem);
+}
+
+@mixin container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: $appWidth;
+}
+
+@mixin label {
+  @include flex-center;
+  position: relative;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1),
+    0 0.25rem 0.25rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.2rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+@mixin input {
+  border-radius: 0.2rem;
+  border: none;
+  padding: 0 1rem;
+  width: 100%;
+  height: 3rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  &:focus {
+    outline: none;
+  }
+}
+
+@mixin form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+@mixin rule {
+  @include flex-center;
+  padding-top: 1.75rem;
+  margin-bottom: 1.75rem;
+  height: 1px;
+  border-bottom: 1px solid $mutedColor;
+  position: relative;
+}
+
+@mixin rule-text {
+  position: absolute;
+  padding: 0px 1rem;
+  color: $mutedColor;
+  background-color: $backgroundColor;
+  font-weight: 700;
+}
+
+@mixin button($background) {
+  @include flex-center;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  position: relative;
+  transition: background-color 0.2s ease;
+  height: 3rem;
+  padding: 0 1rem;
+  background-color: $background;
+  color: $textColor;
+  &:hover {
+    background-color: lighten($background, 5%);
+  }
+  &:active {
+    background-color: darken($background, 5%);
+  }
+}
+
+@mixin icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 1rem;
 }

@@ -4,9 +4,9 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // Styles
-import './Message.scss';
+import './Spinner.scss';
 
-const Message = ({ type, message }) => {
+const Spinner = () => {
   return (
     <AnimatePresence>
       <motion.div
@@ -14,10 +14,12 @@ const Message = ({ type, message }) => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        <div className={`message message--${type}`}>{message}</div>
+        <div className='spinner'>
+          <div className='spinner__container'></div>
+        </div>
       </motion.div>
     </AnimatePresence>
   );
 };
 
-export default Message;
+export default Spinner;

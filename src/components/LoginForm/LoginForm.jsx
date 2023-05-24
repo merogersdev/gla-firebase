@@ -1,5 +1,4 @@
-import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 
 // Toast
 import { toast } from 'react-toastify';
@@ -7,13 +6,16 @@ import { toast } from 'react-toastify';
 import './LoginForm.scss';
 import { useFirebaseAuthContext } from '../../context/AuthContext';
 
-import { FaGoogle, FaUser, FaUserPlus } from 'react-icons/fa';
+import { FaGoogle, FaUser } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import Spinner from '../Spinner/Spinner';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { logIn } = useFirebaseAuthContext();
+  const { logIn, authLoading, signInWithGoogle } = useFirebaseAuthContext();
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -50,52 +52,61 @@ const LoginForm = () => {
     }
   };
 
+  if (authLoading) return <Spinner />;
+
   return (
-    <form onSubmit={handleSubmit} className='login-form'>
-      <label htmlFor='email' className='login-form__label'>
-        <input
-          placeholder='Email'
-          type='text'
-          name='email'
-          className='login-form__input'
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </label>
-      <label htmlFor='password' className='login-form__label'>
-        <input
-          placeholder='Password'
-          type='password'
-          name='password'
-          className='login-form__input'
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </label>
+    <div className='login-form__container'>
+      <form onSubmit={handleSubmit} className='login-form'>
+        <h1 className='login-form__h1'>Login</h1>
+        <label htmlFor='email' className='login-form__label'>
+          <input
+            placeholder='Email'
+            type='text'
+            name='email'
+            className='login-form__input'
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
+        <label htmlFor='password' className='login-form__label'>
+          <input
+            placeholder='Password'
+            type='password'
+            name='password'
+            className='login-form__input'
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
 
-      <button type='submit' className='button button--stretch'>
-        Login with Email
-        <FaUser className='button--icon' />
-      </button>
+        <button type='submit' className='login-form__email-btn'>
+          Login with Email
+          <FaUser className='login-form__icon' />
+        </button>
 
-      <div className='login-form__rule'>
-        <div className='login-form__rule-text'>or</div>
-      </div>
-      <button className='button button--stretch button--login'>
-        Login with Google
-        <FaGoogle className='button--icon' />
-      </button>
-      <div className='login-form__center'>
-        <p>
-          Not a user?
-          <span
-            className='login-form__signup'
-            onClick={() => navigate('/signup')}
-          >
-            Sign Up
-          </span>
-          .
-        </p>
-      </div>
-    </form>
+        <div className='login-form__rule'>
+          <div className='login-form__rule-text'>or</div>
+        </div>
+        <button
+          className='login-form__google-btn'
+          type='button'
+          onClick={() => signInWithGoogle()}
+        >
+          Login with Google
+          <FaGoogle className='login-form__icon' />
+        </button>
+        <div className='login-form__center'>
+          <p>
+            Not a user?
+            <span
+              className='login-form__signup'
+              onClick={() => navigate('/signup')}
+            >
+              Sign Up
+            </span>
+            .
+          </p>
+        </div>
+      </form>
+    </div>
   );
 };
 

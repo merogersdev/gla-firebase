@@ -2,6 +2,7 @@
 @use '../../styles/partials/variables' as *;
 
 .signup-form {
+  @include form;
   &__back {
     margin-left: 0.25rem;
     cursor: pointer;
@@ -11,10 +12,32 @@
     @include flex-center;
   }
   &__rule {
-    @include flex-center;
-    padding-top: 1rem;
-    margin-bottom: 1.75rem;
-    border-bottom: 1px solid $mutedColor;
-    position: relative;
+    @include rule;
+  }
+  &__rule-text {
+    @include rule-text;
+  }
+  &__h1 {
+    @include h1;
+  }
+  &__label {
+    @include label;
+  }
+  &__input {
+    @include input;
+  }
+  &__container {
+    @include container;
+  }
+  &__signup-btn {
+    @include button($primaryColor);
+    border-radius: $borderRadius;
+  }
+  &__back-btn {
+    @include button($secondaryColor);
+    border-radius: $borderRadius;
+  }
+  &__icon {
+    @include icon;
   }
 }

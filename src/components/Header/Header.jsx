@@ -1,29 +1,22 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
 
-// Components
-import Container from "../Container/Container";
+//Icons
+import { SiFirebase } from 'react-icons/si';
 
-import "./Header.scss";
+// Styles
+import './Header.scss';
 
 const Header = ({ title }) => {
   return (
-    <header className="header">
-      <Container>
-        <a className="header__logo" href="/">
+    <header className='header'>
+      <div className='header__container'>
+        <a className='header__logo' href='/'>
+          <SiFirebase className='header__icon' />
           {title}
         </a>
-      </Container>
+      </div>
     </header>
   );
-};
-
-Header.propTypes = {
-  title: PropTypes.string,
-};
-
-Header.defaultProps = {
-  title: "Grocery List",
 };
 
 export default Header;
