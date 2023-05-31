@@ -1,5 +1,5 @@
 # Frontend Stage 1 - Build with Yarn
-FROM node:lts-slim as build
+FROM node:lts as build
 WORKDIR /client
 ENV PATH /client/node_modules/.bin:$PATH
 COPY ./package*.json ./
