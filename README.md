@@ -74,6 +74,13 @@ To build docker image, from root directory run:
 
 `docker build -t gla-firebase .`
 
+### Node.js Deployment
+
+This app can also be deployed via an included Express server.
+
+1. Create .env file in the root folder and and add the same Firebase credentials as in the Development step. Be sure to add a 'PORT' variable if you want to use a port other than 5000.
+2. Run `npm run deploy-npm` to deploy with NPM or `yarn run deploy` to deploy app with Yarn.
+
 ## Tags
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
@@ -88,3 +95,5 @@ To build docker image, from root directory run:
 ![Debian](https://img.shields.io/badge/Debian-D70A53?style=for-the-badge&logo=debian&logoColor=white)
 ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white)
 ![Yarn](https://img.shields.io/badge/yarn-%232C8EBB.svg?style=for-the-badge&logo=yarn&logoColor=white)
+![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
