@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
+import { FaGoogle, FaUser } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 // Toast
 import { toast } from 'react-toastify';
 
-import './LoginForm.scss';
+// Context
 import { useFirebaseAuthContext } from '../../context/AuthContext';
 
-import { FaGoogle, FaUser } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+// Components
 import Spinner from '../Spinner/Spinner';
+
+// Styles
+import './LoginForm.scss';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -52,7 +56,14 @@ const LoginForm = () => {
     }
   };
 
-  if (authLoading) return <Spinner />;
+  if (authLoading)
+    return (
+      <div className='login-form__container'>
+        <div className='login-form__spinner'>
+          <Spinner />
+        </div>
+      </div>
+    );
 
   return (
     <div className='login-form__container'>

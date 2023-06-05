@@ -2,8 +2,7 @@
 @use '../../styles/partials/variables' as *;
 
 .item-list {
-  @include flex-center;
-  margin-bottom: 2rem;
+  @include container;
   &__items {
     width: 100%;
     margin: 0;

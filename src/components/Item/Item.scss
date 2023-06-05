@@ -14,7 +14,7 @@
   font-size: 1.2rem;
   box-shadow: $boxShadow;
   &__delete-btn {
-    @include button($errorColor);
+    @include button-lg($errorColor);
     border-top-right-radius: $borderRadius;
     border-bottom-right-radius: $borderRadius;
   }

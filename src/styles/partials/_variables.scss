@@ -1,7 +1,10 @@
 $fontStack: 'Roboto', sans-serif;
-$appWidth: 17rem;
 
-$backgroundColor: #e3e3e3;
+$breakpoint-desktop: 1280px;
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 375px;
+
+$backgroundColor: #dce0e5;
 $primaryColor: #27b96b;
 $secondaryColor: #292f36;
 $errorColor: #ef3e36;
