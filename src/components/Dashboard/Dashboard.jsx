@@ -6,6 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import ItemList from '../ItemList/ItemList';
 import ItemForm from '../ItemForm/ItemForm';
 import Message from '../Message/Message';
+import Spinner from '../Spinner/Spinner';
 
 // Context and Auth
 import { useFirebaseAuthContext } from '../../context/AuthContext';
@@ -15,7 +16,9 @@ import getItems from '../../api/itemApi';
 import './Dashboard.scss';
 
 const Dashboard = () => {
-  const { user, logOut } = useFirebaseAuthContext();
+  const { user } = useFirebaseAuthContext();
+
+  console.log(user);
 
   const {
     isLoading,
@@ -35,33 +38,37 @@ const Dashboard = () => {
     return <Navigate to='/' replace />;
   }
 
-  // Display loading message
+  // Display loading spinner
   if (isLoading) {
     return (
-      <div className='login-form__container'>
-        <div className='login-form__message'>
-          <Message type='info' message='Loading List...' />
+      <div className='dashboard__container'>
+        <div className='dashboard__spinner'>
+          <Spinner />
         </div>
       </div>
     );
   }
   // If error fetching, display persisting error
   if (error) {
-    return <Message type='error' message='Error fetching items' />;
+    return (
+      <div className='dashboard__container'>
+        <div className='dashboard__message'>
+          <Message type='error' message='Error fetching items' />
+        </div>
+      </div>
+    );
   }
 
   return (
     <>
       <div className='dashboard'>
-        <div className='dashboard__user'>
-          <div className='dashboard__greeting'>Hi, {user.displayName}</div>
-          <button className='dashboard__button' onClick={() => logOut()}>
-            Logout
-          </button>
+        <div className='dashboard__header'>
+          <div className='dashboard__container'>
+            <ItemForm items={sortedItems} />
+          </div>
         </div>
       </div>
       <div className='dashboard__container'>
-        <ItemForm items={sortedItems} />
         <ItemList items={sortedItems} />
       </div>
     </>

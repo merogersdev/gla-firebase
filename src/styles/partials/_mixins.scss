@@ -8,6 +8,14 @@
   align-items: center;
 }
 
+/* --- Media --- */
+
+@mixin tablet {
+  @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
 /* --- Typography --- */
 
 @mixin h1 {
@@ -21,14 +29,18 @@
 
 @mixin main {
   background-color: $backgroundColor;
-  min-height: calc(100vh - 3rem);
+  min-height: calc(100vh - 4rem);
 }
 
 @mixin container {
   display: flex;
-  flex-direction: column;
   margin: 0 auto;
-  width: $appWidth;
+  width: 100%;
+
+  @include tablet {
+    max-width: $breakpoint-tablet;
+    padding: 0;
+  }
 }
 
 @mixin label {
@@ -38,7 +50,6 @@
     0 0.25rem 0.25rem rgba(0, 0, 0, 0.1);
   border-radius: 0.2rem;
   width: 100%;
-  margin-bottom: 1rem;
 }
 
 @mixin input {
@@ -85,7 +96,6 @@
   font-size: 1.2rem;
   position: relative;
   transition: background-color 0.2s ease;
-  height: 3rem;
   padding: 0 1rem;
   background-color: $background;
   color: $textColor;
@@ -95,6 +105,21 @@
   &:active {
     background-color: darken($background, 5%);
   }
+}
+
+@mixin button-sm($background) {
+  @include button($background);
+  height: 2rem;
+}
+
+@mixin button-lg($background) {
+  @include button($background);
+  height: 3rem;
+}
+
+@mixin button-sm-outline($background) {
+  @include button($background);
+  border: 1px solid $secondaryColor;
 }
 
 @mixin icon {

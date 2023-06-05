@@ -6,25 +6,51 @@
   flex-direction: column;
   &__container {
     @include container;
+    flex-direction: column;
+    padding: 0 1rem;
+    @include tablet {
+      padding: 0;
+    }
   }
   &__user {
-    position: fixed;
-    bottom: 1rem;
-    right: 1rem;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    background-color: $textColor;
-    padding: 1rem;
-    border-radius: $borderRadius;
-    box-shadow: $boxShadow;
-    z-index: 2;
+    width: 100%;
+    justify-content: space-between;
+    padding: 1rem 0 2rem 0;
   }
   &__greeting {
-    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
   }
+
   &__button {
-    @include button($secondaryColor);
-    border-radius: $borderRadius;
+    border: none;
+    font-weight: 500;
+    font-size: 1.2rem;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+    font-family: $fontStack;
+    text-decoration: underline;
+  }
+  &__add-item {
+    background-color: red;
+  }
+
+  &__items {
+    @include container;
+    flex-direction: column;
+  }
+  &__header {
+    background-color: lighten($backgroundColor, 5%);
+    box-shadow: $boxShadow;
+    margin-bottom: 2rem;
+    padding: 2rem 0;
+  }
+  &__spinner {
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
 }

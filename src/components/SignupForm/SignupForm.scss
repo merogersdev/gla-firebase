@@ -3,6 +3,7 @@
 
 .signup-form {
   @include form;
+  margin-bottom: 2rem;
   &__back {
     margin-left: 0.25rem;
     cursor: pointer;
@@ -22,20 +23,24 @@
   }
   &__label {
     @include label;
+    margin-bottom: 1rem;
   }
   &__input {
     @include input;
   }
   &__container {
     @include container;
+    justify-content: center;
   }
   &__signup-btn {
     @include button($primaryColor);
     border-radius: $borderRadius;
+    padding: 1rem 2rem;
   }
   &__back-btn {
     @include button($secondaryColor);
     border-radius: $borderRadius;
+    padding: 1rem 2rem;
   }
   &__icon {
     @include icon;

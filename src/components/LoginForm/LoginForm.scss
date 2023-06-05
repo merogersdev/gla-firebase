@@ -3,9 +3,10 @@
 
 .login-form {
   @include form;
-
+  margin-bottom: 2rem;
   &__label {
     @include label;
+    margin-bottom: 1rem;
   }
   &__input {
     @include input;
@@ -29,6 +30,7 @@
   }
   &__container {
     @include container;
+    justify-content: center;
   }
   &__message {
     margin-top: 2rem;
@@ -37,12 +39,19 @@
   &__email-btn {
     @include button($primaryColor);
     border-radius: $borderRadius;
+    padding: 1rem 2rem;
   }
   &__google-btn {
     @include button($infoColor);
     border-radius: $borderRadius;
+    padding: 1rem 2rem;
   }
   &__icon {
     @include icon;
+  }
+  &__spinner {
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
 }
