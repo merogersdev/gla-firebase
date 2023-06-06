@@ -56,10 +56,10 @@
     text-decoration: none;
     transition: background-color 0.2s ease;
     &:hover {
-      background-color: lighten($secondaryColor, 5%);
+      background-color: lighten($secondaryColor, 15%);
     }
     &:active {
-      background-color: darken($secondaryColor, 5%);
+      background-color: darken($secondaryColor, 15%);
     }
   }
   &__link {
