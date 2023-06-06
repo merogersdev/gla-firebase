@@ -3,6 +3,10 @@
 
 .item-form {
   width: 100%;
+
+  @include mobile {
+    max-width: $breakpoint-mobile;
+  }
   &__label {
     @include label;
   }

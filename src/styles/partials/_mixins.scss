@@ -16,6 +16,12 @@
   }
 }
 
+@mixin mobile {
+  @media (min-width: $breakpoint-mobile) {
+    @content;
+  }
+}
+
 /* --- Typography --- */
 
 @mixin h1 {
@@ -30,6 +36,7 @@
 @mixin main {
   background-color: $backgroundColor;
   min-height: calc(100vh - 4rem);
+  min-width: 21rem;
 }
 
 @mixin container {
