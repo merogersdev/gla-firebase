@@ -47,7 +47,9 @@ const App = () => {
             />
           </div>
         </AuthProvider>
-        <ReactQueryDevtools initialIsOpen />
+        {import.meta.env.REACT_DEVTOOLS === true ? (
+          <ReactQueryDevtools initialIsOpen />
+        ) : null}
       </QueryClientProvider>
     </Router>
   );
