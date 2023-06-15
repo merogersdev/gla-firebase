@@ -36,8 +36,8 @@ const LoginForm = () => {
     }
 
     try {
-      const result = await logIn(email, password);
-      navigate(`${import.meta.env.BASE_URL}/dashboard`);
+      await logIn(email, password);
+      navigate('/dashboard');
     } catch (error) {
       // User-readable error message to user
       switch (error.message) {
@@ -108,7 +108,7 @@ const LoginForm = () => {
             Not a user?
             <span
               className='login-form__signup'
-              onClick={() => navigate(`${import.meta.env.BASE_URL}/signup`)}
+              onClick={() => navigate('/signup')}
             >
               Sign Up
             </span>

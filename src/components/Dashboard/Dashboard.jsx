@@ -33,7 +33,7 @@ const Dashboard = () => {
 
   // If no user, redirect to login
   if (user === null) {
-    return <Navigate to={`${import.meta.env.BASE_URL}`} replace />;
+    return <Navigate to='/' replace />;
   }
 
   // Display loading spinner
