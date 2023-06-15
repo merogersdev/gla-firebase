@@ -6,12 +6,12 @@ services:
     container_name: gla-firebase
     restart: unless-stopped
     environment:
-      - VITE_API_KEY=AIzaSyBB4WPR08GAFetRIqF94uEN3C4xXajg890
-      - VITE_AUTH_DOMAIN=gla-firebase-prod.firebaseapp.com
-      - VITE_PROJECT_ID=gla-firebase-prod
-      - VITE_STORAGE_BUCKET=gla-firebase-prod.appspot.com
-      - VITE_MESSAGING_SENDER_ID=202608727786
-      - VITE_APP_ID=1:202608727786:web:b2489a827265de614da993
+      - VITE_API_KEY=
+      - VITE_AUTH_DOMAIN=
+      - VITE_PROJECT_ID=
+      - VITE_STORAGE_BUCKET=
+      - VITE_MESSAGING_SENDER_ID=
+      - VITE_APP_ID=
       - VITE_QUERY_DEVTOOLS=false
     ports:
       - 5000:5000
