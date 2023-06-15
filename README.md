@@ -1,16 +1,16 @@
 # Grocery List App
 
-![Screenshot](/public/screenshot/gla-firebase-screen.png?raw=true 'GLA Firebase Screenshot')
+![GLA Firebase Screenshot](https://my-portfolio-screens.s3.ca-central-1.amazonaws.com/gla-firebase/gla-firebase-screen-lg.png)
 
 ## Goal
 
-Testing React + Firebase as an alternative to the MERN stack, and improve application as I learn more.
+Testing React + Firebase as an alternative to the MERN stack, and improve application as I learn more. Demo deployed to AWS.
 
 ## Core Features
 
 - Add/Delete Items
 - Notifications with React Toastify
-- Deployment via Docker
+- Deployment via Docker Compose
 - Yarn instead of NPM
 - Auth State handled by useContext
 - Firestore Database and @tanstack Query
@@ -46,19 +46,7 @@ service cloud.firestore {
 
 ```
 
-4. Clone repository and create a .env file in the root directory. Add your App credentials to .env file:
-
-/.env
-
-```
-VITE_API_KEY=
-VITE_AUTH_DOMAIN=
-VITE_PROJECT_ID=
-VITE_STORAGE_BUCKET=
-VITE_MESSAGING_SENDER_ID=
-VITE_APP_ID=
-
-```
+4. Clone repository and copy example.env to .env and add your Firebase application credentials
 
 ### To start development server, run:
 
@@ -68,18 +56,10 @@ VITE_APP_ID=
 
 ### Docker Deployment
 
-This app is designed to be deployed via docker container to your favourite Cloud provider. The included Dockerfile first builds a production version of the app and deploys it via NGINX web server container.
+This app is designed to be deployed via docker container to your favourite Cloud provider.
 
-To build docker image, from root directory run:
-
-`docker build -t gla-firebase .`
-
-### Node.js Deployment
-
-This app can also be deployed via an included Express server.
-
-1. Create .env file in the root folder and and add the same Firebase credentials as in the Development step. Be sure to add a 'PORT' variable if you want to use a port other than 5000.
-2. Run `npm run deploy-npm` to deploy with NPM or `yarn run deploy` to deploy app with Yarn.
+1. Copy example.docker-compose.yml to docker-compose.yml and add Firebase application credentials to the environment section.
+2. To build image and deploy, use `yarn run deploy`.
 
 ## Tags
 
@@ -92,8 +72,4 @@ This app can also be deployed via an included Express server.
 ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
 ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
-![Debian](https://img.shields.io/badge/Debian-D70A53?style=for-the-badge&logo=debian&logoColor=white)
-![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white)
 ![Yarn](https://img.shields.io/badge/yarn-%232C8EBB.svg?style=for-the-badge&logo=yarn&logoColor=white)
-![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
-![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
