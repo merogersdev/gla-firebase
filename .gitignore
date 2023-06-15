@@ -28,3 +28,5 @@ build
 .env
 service.yaml
 policy.yaml
+
+docker-compose.yml
