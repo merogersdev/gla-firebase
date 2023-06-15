@@ -29,9 +29,18 @@ const App = () => {
           <Header title='Grocery List App' />
           <div className='app__main'>
             <Routes>
-              <Route path='/' element={<LoginForm />} />
-              <Route path='/dashboard' element={<Dashboard />} />
-              <Route path='/signup' element={<SignupForm />} />
+              <Route
+                path={`${import.meta.env.BASE_URL}`}
+                element={<LoginForm />}
+              />
+              <Route
+                path={`${import.meta.env.BASE_URL}/dashboard`}
+                element={<Dashboard />}
+              />
+              <Route
+                path={`${import.meta.env.BASE_URL}/signup`}
+                element={<SignupForm />}
+              />
             </Routes>
             <ToastContainer
               position='top-center'

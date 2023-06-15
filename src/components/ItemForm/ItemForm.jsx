@@ -30,7 +30,7 @@ const ItemForm = ({ items }) => {
     },
     onError: async (error) => {
       toast.error('Error adding item');
-      console.log(error);
+      console.error(error);
     },
   });
 

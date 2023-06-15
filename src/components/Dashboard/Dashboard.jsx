@@ -18,8 +18,6 @@ import './Dashboard.scss';
 const Dashboard = () => {
   const { user } = useFirebaseAuthContext();
 
-  console.log(user);
-
   const {
     isLoading,
     error,
@@ -35,7 +33,7 @@ const Dashboard = () => {
 
   // If no user, redirect to login
   if (user === null) {
-    return <Navigate to='/' replace />;
+    return <Navigate to={`${import.meta.env.BASE_URL}`} replace />;
   }
 
   // Display loading spinner
