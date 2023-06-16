@@ -1,10 +1,13 @@
-# Frontend Stage 1 - Build with Yarn
-FROM node:lts
+FROM node:18.16.0
+
 WORKDIR /app
-COPY ./package*.json ./
+
+COPY package*.json .
+
 RUN yarn install
+
 COPY . .
-RUN yarn run build
-COPY ./build ./app/build
+
 EXPOSE 5000
-CMD [ "node", "server.js" ]
+
+CMD ["yarn","run","dev"]

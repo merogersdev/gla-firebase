@@ -1,22 +1,21 @@
 {
   "name": "gla-firebase",
-  "private": true,
-  "version": "1.1.0",
+  "version": "1.2.0",
   "type": "module",
+  "description": "GLA Firebase",
+  "main": "src/main.js",
+  "repository": "git@github.com:merogersdev/gla-firebase.git",
+  "author": "Michelle Rogers <michelle@merogers.dev>",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "clean": "rm -rf build",
-    "deploy-npm": "npm run clean && npm run build && node server.js",
-    "deploy-yarn": "yarn run clean && yarn run build && node server.js",
-    "deploy-docker": "docker run --env-file='.env' -d -p 5001:5000 gla-firebase:latest"
+    "deploy": "docker compose up -d"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.29.12",
     "@tanstack/react-query-devtools": "^4.29.12",
-    "dotenv": "^16.1.4",
-    "express": "^4.18.2",
     "firebase": "^9.22.1",
     "framer-motion": "^10.12.16",
     "prop-types": "^15.8.1",
