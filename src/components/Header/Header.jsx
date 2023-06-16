@@ -29,16 +29,10 @@ const Header = ({ title }) => {
           </div>
         ) : (
           <div className='header__user'>
-            <NavLink
-              className='header__link'
-              to={`${import.meta.env.BASE_URL}`}
-            >
+            <NavLink className='header__link' to='/'>
               Login
             </NavLink>
-            <NavLink
-              className='header__link'
-              to={`${import.meta.env.BASE_URL}/signup`}
-            >
+            <NavLink className='header__link' to='/signup'>
               Sign Up
             </NavLink>
           </div>

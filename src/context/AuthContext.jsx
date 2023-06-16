@@ -39,7 +39,7 @@ export function AuthProvider({ children }) {
       setUser(currentuser);
       // If user present, redirect to dashboard - session persistence
       if (auth !== null) {
-        navigate(`${import.meta.env.BASE_URL}/dashboard`);
+        navigate('/dashboard');
       }
       setAuthLoading(false);
     });
