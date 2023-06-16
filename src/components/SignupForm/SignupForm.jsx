@@ -84,7 +84,7 @@ const SignupForm = () => {
         <button
           className='signup-form__back-btn'
           type='button'
-          onClick={() => navigate('/')}
+          onClick={() => navigate(import.meta.env.BASE_URL)}
         >
           Go Back
           <FaArrowLeft className='signup-form__icon' />

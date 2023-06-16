@@ -24,12 +24,11 @@ const Item = ({ item }) => {
     },
     onError: async (error) => {
       toast.error('Error deleting item');
-      console.log(error);
+      console.error(error);
     },
   });
 
   const handleDelete = (item) => {
-    console.log(item);
     deleteItemMutation.mutate(item.id);
   };
 

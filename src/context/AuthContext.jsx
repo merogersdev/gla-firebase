@@ -6,7 +6,6 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
-  GoogleAuthProvider,
   signInWithPopup,
   signOut,
 } from 'firebase/auth';
@@ -40,7 +39,7 @@ export function AuthProvider({ children }) {
       setUser(currentuser);
       // If user present, redirect to dashboard - session persistence
       if (auth !== null) {
-        navigate('/dashboard');
+        navigate(`${import.meta.env.BASE_URL}/dashboard`);
       }
       setAuthLoading(false);
     });
