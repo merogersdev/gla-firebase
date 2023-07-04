@@ -1,5 +1,5 @@
 # Build
-FROM node:18.16.0 AS build
+FROM node:lts-alpine AS build
 
 ARG VITE_API_KEY
 ARG VITE_AUTH_DOMAIN
