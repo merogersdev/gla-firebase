@@ -14,4 +14,4 @@ services:
       - VITE_APP_ID=
       - VITE_QUERY_DEVTOOLS=false
     ports:
-      - 5000:5000
+      - 8080:80
