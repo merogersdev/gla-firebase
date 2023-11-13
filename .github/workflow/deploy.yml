@@ -2,7 +2,7 @@
 name: Build and Push Focus to AWS ECR
 on:
   push:
-    branches: [feat/50-add-github-cicd-pipeline]
+    branches: [main]
 
 jobs:
   build-and-push:
