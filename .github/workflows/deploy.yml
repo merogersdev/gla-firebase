@@ -49,7 +49,7 @@ jobs:
       SHA: ${{ github.sha }}
       REPOSITORY: gla-firebase
       IMAGE_TAG: latest
-      PORT: 3001
+      APP_PORT: 3001
     steps:
       # Configure AWS
       - name: Configure AWS Credentials
@@ -73,7 +73,7 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_PRIVATE_KEY }}
-          port: ${{ env.PORT }}
+          port: ${{ env.APP_PORT }}
           envs: ECR_REGISTRY,ECR_REPOSITORY,IMAGE_TAG,SHA
           script: |
             aws ecr get-login-password --region ca-central-1 | docker login --username AWS --password-stdin $ECR_REGISTRY
