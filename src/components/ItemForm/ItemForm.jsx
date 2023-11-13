@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 
 // Toast
@@ -18,6 +18,8 @@ const ItemForm = ({ items }) => {
   const [name, setName] = useState("");
 
   const { user } = useFirebaseAuthContext();
+
+  const itemFormRef = useRef(null);
 
   const queryClient = useQueryClient();
 
@@ -49,6 +51,12 @@ const ItemForm = ({ items }) => {
     addItemMutation.mutate({ name, userID: user.uid });
   };
 
+  useEffect(() => {
+    if (itemFormRef) {
+      itemFormRef.current.focus();
+    }
+  }, [itemFormRef]);
+
   return (
     <form className="item-form" onSubmit={handleItemSubmit}>
       <label htmlFor="name" className="item-form__label">
@@ -59,6 +67,7 @@ const ItemForm = ({ items }) => {
           value={name}
           onChange={(e) => setName(e.target.value)}
           maxLength={20}
+          ref={itemFormRef}
         />
         <button className="item-form__add-btn" type="submit">
           <FaPlus className="button__icon" />
