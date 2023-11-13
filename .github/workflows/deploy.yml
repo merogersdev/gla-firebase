@@ -74,8 +74,7 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_PRIVATE_KEY }}
-
-          envs: ECR_REGISTRY,ECR_REPOSITORY,IMAGE_TAG,SHA
+          envs: ECR_REGISTRY,ECR_REPOSITORY,IMAGE_TAG,SHA,APP_PORT
           script: |
             aws ecr get-login-password --region ca-central-1 | docker login --username AWS --password-stdin $ECR_REGISTRY
             docker pull $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
