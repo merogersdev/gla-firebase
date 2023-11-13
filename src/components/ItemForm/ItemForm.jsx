@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import { useQueryClient, useMutation } from '@tanstack/react-query';
+import React, { useState } from "react";
+import { useQueryClient, useMutation } from "@tanstack/react-query";
 
 // Toast
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 // Icons
-import { FaPlus } from 'react-icons/fa';
+import { FaPlus } from "react-icons/fa";
 
 // Context and Auth
-import { useFirebaseAuthContext } from '../../context/AuthContext';
-import { addItem } from '../../api/itemApi';
+import { useFirebaseAuthContext } from "../../context/AuthContext";
+import { addItem } from "../../api/itemApi";
 
 // Styles
-import './ItemForm.scss';
+import "./ItemForm.scss";
 
 const ItemForm = ({ items }) => {
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
 
   const { user } = useFirebaseAuthContext();
 
@@ -24,12 +24,12 @@ const ItemForm = ({ items }) => {
   const addItemMutation = useMutation({
     mutationFn: addItem,
     onSuccess: async () => {
-      toast.success('Item added successfully');
-      setName('');
-      queryClient.invalidateQueries({ queryKey: ['items'] });
+      toast.success("Item added successfully");
+      setName("");
+      queryClient.invalidateQueries({ queryKey: ["items"] });
     },
     onError: async (error) => {
-      toast.error('Error adding item');
+      toast.error("Error adding item");
       console.error(error);
     },
   });
@@ -42,7 +42,7 @@ const ItemForm = ({ items }) => {
     );
 
     if (alreadyExists) {
-      toast.error('Item already exists');
+      toast.error("Item already exists");
       return;
     }
 
@@ -50,18 +50,18 @@ const ItemForm = ({ items }) => {
   };
 
   return (
-    <form className='item-form' onSubmit={handleItemSubmit}>
-      <label htmlFor='name' className='item-form__label'>
+    <form className="item-form" onSubmit={handleItemSubmit}>
+      <label htmlFor="name" className="item-form__label">
         <input
-          type='text'
-          className='item-form__input'
-          placeholder='Add Item...'
+          type="text"
+          className="item-form__input"
+          placeholder="Add Item..."
           value={name}
           onChange={(e) => setName(e.target.value)}
-          maxLength={15}
+          maxLength={20}
         />
-        <button className='item-form__add-btn' type='submit'>
-          <FaPlus className='button__icon' />
+        <button className="item-form__add-btn" type="submit">
+          <FaPlus className="button__icon" />
         </button>
       </label>
     </form>
