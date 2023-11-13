@@ -76,7 +76,7 @@ jobs:
           port: ${{ secrets.PORT }}
           envs: ECR_REGISTRY,ECR_REPOSITORY,IMAGE_TAG,SHA
           script: |
-            sudo $(aws ecr get-login --no-include-email --region ca-central-1)
+            aws ecr get-login-password --region ca-central-1 | docker login --username AWS --password-stdin $ECR_REGISTRY
             docker pull $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
             docker stop $ECR_REPOSITORY || true && docker rm $ECR_REPOSITORY || true
             docker run -d -p $PORT:80 --name $ECR_REPOSITORY $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
