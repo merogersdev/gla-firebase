@@ -76,7 +76,6 @@ jobs:
           port: ${{ secrets.PORT }}
           envs: ECR_REGISTRY,ECR_REPOSITORY,IMAGE_TAG,SHA
           script: |
-            echo "$ECR_REGISTRY, $ECR_REPOSITORY, $IMAGE_TAG, $SHA"
-            # docker pull $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-            # docker stop $ECR_REPOSITORY || true && docker rm $ECR_REPOSITORY || true
-            # docker run -d -p $PORT:80 --name $ECR_REPOSITORY $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+            docker pull $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+            docker stop $ECR_REPOSITORY || true && docker rm $ECR_REPOSITORY || true
+            docker run -d -p $PORT:80 --name $ECR_REPOSITORY $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
