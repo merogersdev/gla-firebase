@@ -1,21 +1,22 @@
-import React from 'react';
+import React, { useState } from "react";
 
 // Components
-import Item from '../Item/Item';
-import Message from '../Message/Message';
+import Item from "../Item/Item";
 
 // Framer Motion for Animations
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from "framer-motion";
 
 // Styles
-import './ItemList.scss';
+import "./ItemList.scss";
 
 const ItemList = ({ items }) => {
+  // Use loading state for all list items, not just one
+  const [loading, setLoading] = useState(false);
   return (
-    <div className='item-list'>
-      <ul className='item-list__items'>
+    <div className="item-list">
+      <ul className="item-list__items">
         <AnimatePresence>
-          {items.length !== 0 || items !== null ? (
+          {items && items.length !== 0 ? (
             items.map((item) => (
               <motion.div
                 key={item.id}
@@ -23,11 +24,16 @@ const ItemList = ({ items }) => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
-                <Item item={item} key={item.id} />
+                <Item
+                  item={item}
+                  key={item.id}
+                  loading={loading}
+                  setLoading={setLoading}
+                />
               </motion.div>
             ))
           ) : (
-            <Message message='No items to display' />
+            <div className="item-list__message">No groceries. Yay! </div>
           )}
         </AnimatePresence>
       </ul>
