@@ -4,6 +4,8 @@
 .item-list {
   @include container;
   justify-content: center;
+  height: 100%;
+  margin-bottom: 2rem;
   &__message {
     width: 100%;
     font-weight: 700;

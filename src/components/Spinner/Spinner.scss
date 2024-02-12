@@ -1,5 +1,5 @@
-@use '../../styles/partials/mixins' as *;
-@use '../../styles/partials/variables' as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
 
 @keyframes spinner {
   0% {
@@ -11,14 +11,14 @@
 }
 
 .spinner {
-  @include container;
-  align-items: center;
-  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+
   &__container {
-    width: 50px;
-    height: 50px;
-    border: 0.5rem solid $textColor;
-    border-top: 0.5rem solid $secondaryColor;
+    width: 4rem;
+    height: 4rem;
+    border: 0.75rem solid $textColor;
+    border-top: 0.75rem solid $secondaryColor;
     border-radius: 50%;
     animation: spinner 1s linear infinite;
   }

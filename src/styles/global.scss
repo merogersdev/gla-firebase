@@ -1,6 +1,6 @@
-@use './partials/font' as *;
-@use './partials/variables' as *;
-@use './partials/mixins' as *;
+@use "./partials/font" as *;
+@use "./partials/variables" as *;
+@use "./partials/mixins" as *;
 
 /* --- Resets --- */
 *,
@@ -14,11 +14,19 @@
 html {
   font-size: 16px;
   font-family: $fontStack;
+  height: 100%;
 }
 
 body {
   margin: 0;
   background-color: $backgroundColor;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 /* --- App --- */

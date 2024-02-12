@@ -1,12 +1,13 @@
-@use '../../styles/partials/mixins' as *;
-@use '../../styles/partials/variables' as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
 
 .header {
   @include flex-center;
   box-shadow: $boxShadow;
   height: 4rem;
   background-color: $secondaryColor;
-  position: relative;
+  position: absolute;
+  width: 100%;
   z-index: 1;
   &__logo {
     color: $textColor;
@@ -19,7 +20,8 @@
     @include container;
     position: relative;
     justify-content: space-between;
-    padding: 0 1rem;
+
+    max-width: $breakpoint-mobile;
     @include tablet {
       padding: 0;
     }

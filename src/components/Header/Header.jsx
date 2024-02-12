@@ -2,7 +2,7 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
 //Icons
-import { SiFirebase } from "react-icons/si";
+import { FaShoppingBag } from "react-icons/fa";
 
 // Context
 import { useFirebaseAuthContext } from "../../context/AuthContext";
@@ -18,7 +18,7 @@ const Header = ({ title }) => {
     <header className="header">
       <div className="header__container">
         <Link className="header__logo" to="/">
-          <SiFirebase className="header__icon" />
+          <FaShoppingBag className="header__icon" />
           <span className="header__title">{title}</span>
         </Link>
         {user !== null ? (

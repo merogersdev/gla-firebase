@@ -34,9 +34,12 @@
 /* --- Elements --- */
 
 @mixin main {
+  display: flex;
+  padding-top: 4rem;
+  justify-content: flex-start;
+  flex-direction: column;
   background-color: $backgroundColor;
-  min-height: calc(100vh - 4rem);
-  min-width: 21rem;
+  height: 100%;
 }
 
 @mixin container {
