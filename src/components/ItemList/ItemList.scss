@@ -1,9 +1,17 @@
-@use '../../styles/partials/mixins' as *;
-@use '../../styles/partials/variables' as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
 
 .item-list {
   @include container;
   justify-content: center;
+  &__message {
+    width: 100%;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 3rem;
+    color: $secondaryColor;
+    @include flex-center;
+  }
   &__items {
     width: 100%;
     margin: 0;

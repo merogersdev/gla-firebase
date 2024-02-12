@@ -1,21 +1,20 @@
-import React from 'react';
+import React from "react";
 
 // Components
-import Item from '../Item/Item';
-import Message from '../Message/Message';
+import Item from "../Item/Item";
 
 // Framer Motion for Animations
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from "framer-motion";
 
 // Styles
-import './ItemList.scss';
+import "./ItemList.scss";
 
 const ItemList = ({ items }) => {
   return (
-    <div className='item-list'>
-      <ul className='item-list__items'>
+    <div className="item-list">
+      <ul className="item-list__items">
         <AnimatePresence>
-          {items.length !== 0 || items !== null ? (
+          {items && items.length !== 0 ? (
             items.map((item) => (
               <motion.div
                 key={item.id}
@@ -27,7 +26,7 @@ const ItemList = ({ items }) => {
               </motion.div>
             ))
           ) : (
-            <Message message='No items to display' />
+            <div className="item-list__message">No groceries. Yay! </div>
           )}
         </AnimatePresence>
       </ul>
