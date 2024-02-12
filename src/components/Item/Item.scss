@@ -1,5 +1,5 @@
-@use '../../styles/partials/mixins' as *;
-@use '../../styles/partials/variables' as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
 
 .item {
   display: flex;
@@ -17,5 +17,16 @@
     @include button-lg($errorColor);
     border-top-right-radius: $borderRadius;
     border-bottom-right-radius: $borderRadius;
+    &--disabled {
+      background-color: $mutedColor;
+      &:hover {
+        background-color: $mutedColor;
+        cursor: default;
+      }
+      &:active {
+        background-color: $mutedColor;
+        cursor: default;
+      }
+    }
   }
 }

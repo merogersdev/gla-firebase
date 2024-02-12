@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // Components
 import Item from "../Item/Item";
@@ -10,6 +10,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import "./ItemList.scss";
 
 const ItemList = ({ items }) => {
+  // Use loading state for all list items, not just one
+  const [loading, setLoading] = useState(false);
   return (
     <div className="item-list">
       <ul className="item-list__items">
@@ -22,7 +24,12 @@ const ItemList = ({ items }) => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
-                <Item item={item} key={item.id} />
+                <Item
+                  item={item}
+                  key={item.id}
+                  loading={loading}
+                  setLoading={setLoading}
+                />
               </motion.div>
             ))
           ) : (

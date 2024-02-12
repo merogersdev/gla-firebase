@@ -1,4 +1,4 @@
-@use './variables' as *;
+@use "./variables" as *;
 
 /* --- Utility --- */
 
@@ -67,7 +67,7 @@
   height: 3rem;
   font-size: 1.2rem;
   font-weight: 500;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   &:focus {
     outline: none;
   }

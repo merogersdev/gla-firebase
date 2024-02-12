@@ -37,6 +37,12 @@ const ItemForm = ({ items }) => {
     },
   });
 
+  const capitalizeFirst = (string) => {
+    const first = string.charAt(0).toUpperCase();
+    const rest = string.slice(1);
+    return `${first}${rest}`;
+  };
+
   const handleItemSubmit = (e) => {
     e.preventDefault();
 
@@ -49,7 +55,7 @@ const ItemForm = ({ items }) => {
       return;
     }
 
-    addItemMutation.mutate({ name, userID: user.uid });
+    addItemMutation.mutate({ name: capitalizeFirst(name), userID: user.uid });
   };
 
   useEffect(() => {
@@ -70,7 +76,13 @@ const ItemForm = ({ items }) => {
           maxLength={20}
           ref={itemFormRef}
         />
-        <button className="item-form__add-btn" type="submit">
+        <button
+          className={`item-form__add-btn${
+            addItemMutation.isLoading ? " item-form__add-btn--disabled" : ""
+          }`}
+          type="submit"
+          disabled={addItemMutation.isLoading}
+        >
           <FaPlus className="button__icon" />
         </button>
       </label>
