@@ -29,6 +29,7 @@ const ItemForm = ({ items }) => {
       toast.success("Item added successfully");
       setName("");
       queryClient.invalidateQueries({ queryKey: ["items"] });
+      itemFormRef.current.focus();
     },
     onError: async (error) => {
       toast.error("Error adding item");
