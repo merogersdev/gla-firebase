@@ -17,6 +17,9 @@
     @include button-lg($errorColor);
     border-top-right-radius: $borderRadius;
     border-bottom-right-radius: $borderRadius;
+    &:hover {
+      background-color: lighten($errorColor, 10%);
+    }
     &--disabled {
       background-color: $mutedColor;
       &:hover {
