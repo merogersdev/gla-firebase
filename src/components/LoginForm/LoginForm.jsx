@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaGoogle, FaUser } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import emailRegex, { nameRegex, passwordRegex } from "../../util/regex";
 
 // Toast
 import { toast } from "react-toastify";
@@ -25,12 +26,15 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (email.length < 6 || !email.includes("@")) {
+    const validEmail = emailRegex.test(email);
+    const validPassword = passwordRegex.test(password);
+
+    if (validEmail === false) {
       toast.error("Must provide a valid email address");
       return;
     }
 
-    if (password.length === 0) {
+    if (validPassword === false) {
       toast.error("Must provide a password");
       return;
     }
