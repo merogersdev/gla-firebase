@@ -41,7 +41,7 @@ const ItemForm = ({ items }) => {
     }
 
     const alreadyExists = items.some(
-      (item) => item.name.toLowerCase() === name.toLowerCase()
+      (item) => item.name.toLowerCase() === name.toLowerCase(),
     );
 
     if (alreadyExists) {

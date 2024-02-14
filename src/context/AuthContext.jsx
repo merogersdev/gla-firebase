@@ -1,5 +1,5 @@
-import { createContext, useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { createContext, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Firebase Auth
 import {
@@ -8,10 +8,10 @@ import {
   onAuthStateChanged,
   signInWithPopup,
   signOut,
-} from 'firebase/auth';
+} from "firebase/auth";
 
 // Firebase Config
-import { auth, googleProvider } from '../config/firebase';
+import { auth, googleProvider } from "../config/firebase";
 
 const AuthContext = createContext();
 
@@ -39,7 +39,7 @@ export function AuthProvider({ children }) {
       setUser(currentuser);
       // If user present, redirect to dashboard - session persistence
       if (auth !== null) {
-        navigate('/dashboard');
+        navigate("/dashboard");
       }
       setAuthLoading(false);
     });

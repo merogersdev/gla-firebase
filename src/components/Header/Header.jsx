@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
-//Icons
+// Icons
 import { FaShoppingBag } from "react-icons/fa";
 
 // Context

@@ -7,19 +7,19 @@ import {
   deleteDoc,
   query,
   orderBy,
-} from 'firebase/firestore';
+} from "firebase/firestore";
 
 // Firebase Config
-import { db } from '../config/firebase';
+import { db } from "../config/firebase";
 
 // Item Collection Reference
-const itemsColRef = collection(db, 'items');
+const itemsColRef = collection(db, "items");
 
 // GET Items
 const getItems = async () => {
   try {
     // Get all items, order alphabetically
-    const data = await getDocs(query(itemsColRef, orderBy('name', 'desc')));
+    const data = await getDocs(query(itemsColRef, orderBy("name", "desc")));
     const itemList = data.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
@@ -51,7 +51,7 @@ export const addItem = async ({ name, userID }) => {
 // Delete Item
 export const deleteItem = async (itemID) => {
   try {
-    const result = await deleteDoc(doc(db, 'items', itemID));
+    const result = await deleteDoc(doc(db, "items", itemID));
     return result;
   } catch (error) {
     console.log(error.message);

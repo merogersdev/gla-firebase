@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
 // Framer Motion for Animations
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from "framer-motion";
 
 // Styles
-import './Message.scss';
+import "./Message.scss";
 
 const Message = ({ type, message }) => {
   return (
