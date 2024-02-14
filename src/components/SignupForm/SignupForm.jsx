@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
-import emailRegex, { nameRegex, passwordRegex } from "../../util/regex";
+import { emailRegex, nameRegex, passwordRegex } from "../../util/regex";
+
+import { testEmail, testName, testPassword } from "../../util/regex";
 
 // Toast
 import { toast } from "react-toastify";
@@ -27,21 +29,17 @@ const SignupForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const validName = nameRegex.test(name);
-    const validEmail = emailRegex.test(email);
-    const validPassword = passwordRegex.test(password);
-
-    if (validName === false) {
+    if (testName(name) === false) {
       toast.error("Must provide a name");
       return;
     }
 
-    if (validEmail === false) {
+    if (testEmail(email) === false) {
       toast.error("Must provide a valid email address");
       return;
     }
 
-    if (validPassword === false) {
+    if (testPassword(password) === false) {
       toast.error("Must provide a password");
       return;
     }

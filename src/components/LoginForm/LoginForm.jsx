@@ -1,18 +1,11 @@
 import React, { useState } from "react";
 import { FaGoogle, FaUser } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import emailRegex, { nameRegex, passwordRegex } from "../../util/regex";
-
-// Toast
+import { testEmail, testPassword } from "../../util/regex";
 import { toast } from "react-toastify";
-
-// Context
 import { useFirebaseAuthContext } from "../../context/AuthContext";
-
-// Components
 import Spinner from "../Spinner/Spinner";
 
-// Styles
 import "./LoginForm.scss";
 
 const LoginForm = () => {
@@ -26,15 +19,12 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const validEmail = emailRegex.test(email);
-    const validPassword = passwordRegex.test(password);
-
-    if (validEmail === false) {
+    if (testEmail(email) === false) {
       toast.error("Must provide a valid email address");
       return;
     }
 
-    if (validPassword === false) {
+    if (testPassword(password) === false) {
       toast.error("Must provide a password");
       return;
     }
