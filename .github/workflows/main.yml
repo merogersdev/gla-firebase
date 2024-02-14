@@ -5,8 +5,9 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+    name: Deploy to AWS S3
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
