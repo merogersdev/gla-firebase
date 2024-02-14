@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
 // Framer Motion for Animations
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from "framer-motion";
 
 // Styles
-import './Spinner.scss';
+import "./Spinner.scss";
 
 const Spinner = () => {
   return (
@@ -14,8 +14,8 @@ const Spinner = () => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        <div className='spinner'>
-          <div className='spinner__container'></div>
+        <div className="spinner">
+          <div className="spinner__container"></div>
         </div>
       </motion.div>
     </AnimatePresence>

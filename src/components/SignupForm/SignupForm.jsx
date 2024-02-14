@@ -1,20 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaArrowLeft } from "react-icons/fa";
-import { emailRegex, nameRegex, passwordRegex } from "../../util/regex";
-
+import { FaArrowLeft, FaUser } from "react-icons/fa";
 import { testEmail, testName, testPassword } from "../../util/regex";
-
-// Toast
 import { toast } from "react-toastify";
-
-// Context
 import { useFirebaseAuthContext } from "../../context/AuthContext";
 
-// Icons
-import { FaUser } from "react-icons/fa";
-
-// Styles
 import "./SignupForm.scss";
 
 const SignupForm = () => {
