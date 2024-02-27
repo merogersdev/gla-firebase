@@ -2,34 +2,34 @@
 
 ![GLA Firebase Screenshot](https://my-portfolio-screens.s3.ca-central-1.amazonaws.com/gla-firebase/gla-firebase-screen-lg.png)
 
-## Summary
+## Quick Summary
 
-Real-world grocery list application on steroids that I use every day. Features full CI/CD pipeline with Github Actions, Firebase Auth for email and Google SSO sign-in, and persisting data with Firebase Auth. Demo is deployed to AWS S3 bucket with CloudFront Distribution and custom subdomain.
+Real-world grocery list application with SSO and persistent database via Firebase.
 
-## Core Features
+## Goal
 
-- User input validation with custom Regexes
-- Notifications with React Toastify
-- Yarn instead of NPM
-- Auth State handled by useContext
-- Firestore Database
-- Firebase Auth
-- React/Tanstack Query and Mutation
-- List cached using useMemo hook
-- Vitest for testing with jest-compatible syntax
-- Pre-commit linting and unit tests with Husky
+Testing React + Firebase as an alternative to the MERN stack, and improve application as I learn more. Demo deployed to AWS S3 + CloudFront via Github Actions.
 
-## Scripts:
+## Core Technologies
+
+- Vite v4.3.9
+- React v18.2
+- Tanstack Query v5.24
+- Sass v1.71
+- Firebase v10.8
+
+## Scripts
 
 - Development Server: `yarn run dev`
 - Build for Production: `yarn run build`
-- Test with Vitest: `yarn run test`
-- Auto Test with Vitest: `yarn run test:auto`
-- Run Eslint (Standard): `yarn run lint`
-- Run Eslint (Standard) auto-fix: `yarn run lint:fix`
-- Prepare with Husky `yarn run prepare`
+- Production Preview: `yarn run preview`
+- Run Tests: `yarn run test`
+- Run Tests with Auto Fix: `yarn run test:auto`
+- Run Linting: `yarn run lint`
+- Run Linting with Auto Fix: `yarn run lint: fix`
+- Initial Setup for Husky: `yarn run prepare`
 
-## Development and Firebase Setup
+## Initial Setup (Development)
 
 1. Sign up for [Firebase](https://firebase.google.com/) and create Web App.
 2. Enable Firebase Auth (using both Email and Password & Google Auth)
@@ -60,45 +60,7 @@ service cloud.firestore {
 
 4. Clone or fork repository and copy example.env to .env and add your Firebase application credentials
 
-## Deployment
-
-This app is designed to deploy straight to a AWS S3 bucket via Github Actions and assumes you already have an AWS IAM account and access key setup with the proper policies for S3 read/write and CloudFront invalidations.
-
-1. Configure S3 bucket for public access (public access turned off) and enable static web hosting - set index.html as both index document and error document. Includes the following bucket policy, substituting your bucket name.
-
-```
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "PublicReadGetObject",
-            "Effect": "Allow",
-            "Principal": "*",
-            "Action": "s3:GetObject",
-            "Resource": "arn:aws:s3:::example-bucket/*"
-        }
-    ]
-}
-```
-
-2. Add CloudFront distribution to S3 bucket in AWS Console or AWS CLI and be sure to set index.html as the default root object.
-
-3. Setup the following repository secrets in Github Actions:
-
-- AWS_ACCESS_KEY_ID (Access Key for AWS IAM)
-- AWS_SECRET_ACCESS_KEY (AWS Secret Access Key)
-- AWS_CF_DISTRIBUTION (AWS CloudFront Distribution)
-- AWS_REGION (AWS Region eg. ca-central-1)
-- AWS_S3_BUCKET (AWS Bucket Name)
-- VITE_API_KEY (Firebase API Key)
-- VITE_APP_ID (Firebase App ID)
-- VITE_AUTH_DOMAIN (Firebase Auth Domain)
-- VITE_MESSAGING_SENDER_ID (Firebase Messaging Sender ID)
-- VITE_PROJECT_ID (Firebase Project ID)
-- VITE_QUERY_DEVTOOLS (Set to false)
-- VITE_STORAGE_BUCKET (Firebase Storage Bucket)
-
-4. Merge into main branch, and Github Actions will build, test and deploy application.
+5. To start the development server, run `yarn run dev`
 
 ## Tags
 
