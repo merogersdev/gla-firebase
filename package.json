@@ -1,12 +1,13 @@
 {
   "name": "gla-firebase",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "type": "module",
   "description": "GLA Firebase",
   "main": "src/main.js",
   "repository": "git@github.com:merogersdev/gla-firebase.git",
   "author": "Michelle Rogers <michelle@merogers.dev>",
   "license": "MIT",
+  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "vite build",

@@ -12,11 +12,22 @@ Testing React + Firebase as an alternative to the MERN stack, and improve applic
 
 ## Core Technologies
 
-- Vite v5.1.4
+- Vite v4.3.9
 - React v18.2
 - Tanstack Query v5.24
 - Sass v1.71
 - Firebase v10.8
+
+## Scripts
+
+- Development Server: `yarn run dev`
+- Build for Production: `yarn run build`
+- Production Preview: `yarn run preview`
+- Run Tests: `yarn run test`
+- Run Tests with Auto Fix: `yarn run test:auto`
+- Run Linting: `yarn run lint`
+- Run Linting with Auto Fix: `yarn run lint: fix`
+- Initial Setup for Husky: `yarn run prepare`
 
 ## Initial Setup (Development)
 
@@ -50,12 +61,6 @@ service cloud.firestore {
 4. Clone or fork repository and copy example.env to .env and add your Firebase application credentials
 
 5. To start the development server, run `yarn run dev`
-
-## Scripts
-
-- Development Server: `yarn run dev`
-- Build for Production: `yarn run build`
-- Production Preview: `yarn run preview`
 
 ## Tags
 
