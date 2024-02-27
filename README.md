@@ -47,7 +47,7 @@ service cloud.firestore {
 
 ```
 
-4. Clone repository and copy example.env to .env and add your Firebase application credentials
+4. Clone or fork repository and copy example.env to .env and add your Firebase application credentials
 
 5. To start the development server, run `yarn run dev`
 
@@ -69,3 +69,4 @@ service cloud.firestore {
 ![Yarn](https://img.shields.io/badge/yarn-%232C8EBB.svg?style=for-the-badge&logo=yarn&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
 ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
+![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)

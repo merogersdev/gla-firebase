@@ -1,18 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaArrowLeft } from "react-icons/fa";
-import emailRegex, { nameRegex, passwordRegex } from "../../util/regex";
-
-// Toast
+import { FaArrowLeft, FaUser } from "react-icons/fa";
+import { testEmail, testName, testPassword } from "../../util/regex";
 import { toast } from "react-toastify";
-
-// Context
 import { useFirebaseAuthContext } from "../../context/AuthContext";
 
-// Icons
-import { FaUser } from "react-icons/fa";
-
-// Styles
 import "./SignupForm.scss";
 
 const SignupForm = () => {
@@ -27,21 +19,17 @@ const SignupForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const validName = nameRegex.test(name);
-    const validEmail = emailRegex.test(email);
-    const validPassword = passwordRegex.test(password);
-
-    if (validName === false) {
+    if (testName(name) === false) {
       toast.error("Must provide a name");
       return;
     }
 
-    if (validEmail === false) {
+    if (testEmail(email) === false) {
       toast.error("Must provide a valid email address");
       return;
     }
 
-    if (validPassword === false) {
+    if (testPassword(password) === false) {
       toast.error("Must provide a password");
       return;
     }

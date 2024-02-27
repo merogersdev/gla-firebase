@@ -1,18 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
-import { nameRegex } from "../../util/regex";
-
-// Toast
+import { capitalizeFirst } from "../../util/string";
+import { testName } from "../../util/regex";
 import { toast } from "react-toastify";
-
-// Icons
 import { FaPlus } from "react-icons/fa";
-
-// Context and Auth
 import { useFirebaseAuthContext } from "../../context/AuthContext";
 import { addItem } from "../../api/itemApi";
 
-// Styles
 import "./ItemForm.scss";
 
 const ItemForm = ({ items }) => {
@@ -38,24 +32,16 @@ const ItemForm = ({ items }) => {
     },
   });
 
-  const capitalizeFirst = (string) => {
-    const first = string.charAt(0).toUpperCase();
-    const rest = string.slice(1);
-    return `${first}${rest}`;
-  };
-
   const handleItemSubmit = (e) => {
     e.preventDefault();
 
-    const validItem = nameRegex.test(name);
-
-    if (validItem === false) {
+    if (testName(name) === false) {
       toast.error("Not a valid item name");
       return;
     }
 
     const alreadyExists = items.some(
-      (item) => item.name.toLowerCase() === name.toLowerCase()
+      (item) => item.name.toLowerCase() === name.toLowerCase(),
     );
 
     if (alreadyExists) {

@@ -1,7 +1,14 @@
-const emailRegex = /([\d\w._-]+@[\d\w._-]+\.[\d\w_-]+)/gi;
+export const testEmail = (email) => {
+  const regex = /([\d\w._-]+@[\d\w._-]+\.[\d\w_-]+)/gi;
+  return regex.test(email);
+};
 
-export const nameRegex = /^[a-zA-Z\ ]{1,25}$/gi;
+export const testName = (name) => {
+  const regex = /^[a-zA-Z ]{1,25}$/gi;
+  return regex.test(name);
+};
 
-export const passwordRegex = /^.{1,25}$/gi;
-
-export default emailRegex;
+export const testPassword = (password) => {
+  const regex = /^.{8,25}$/gi;
+  return regex.test(password);
+};
